@@ -1,0 +1,67 @@
+<header class="header" xmlns:th="http://www.w3.org/1999/xhtml">
+    <a href="#" class="logo"> <i class="fas fa-shopping-bag"></i> Pazar </a>
+
+    <nav class="navbar">
+
+        <a th:href="@{/home}">Home</a>
+        <a th:href="@{/aboutUs}">AboutUs</a>
+        <a href="contactusform.html">ContactUs</a>
+        <a href="#Sellers">Sellers</a>
+        <a href="#categories">categories</a>
+        <a href="Secondpage.html">FAQ</a> |
+
+    </nav>
+
+    <div class="icons">
+
+        <div class="fa fa-bars" id="Menu-button"></div>
+        <div class="fa fa-search" id="search-button"></div>
+        <div class="fa fa-shopping-cart" id="cart-button"></div>
+        <div class="fa fa-user" id="login-button" th:if="${not #authentication.isAuthenticated()}"></div>
+
+    </div>
+
+    <form class="search-form">
+        <input type="search" id="search-box" placeholder="search">
+        <label for="search-box"class="fa fa-search"> </label>
+    </form>
+
+
+    <div class="cart">
+
+        <!--ADD ITEMS TO THE CART -->
+        <div class="box">
+            <i class="fa fa-trash"> </i>
+            <img src="image/downlo11ad.jpg">
+            <div class="content">
+                <h3> Banana </h3>
+                <span class="price">$4.5/-</span>
+                <span class="Quantity">item No: 1</span>
+            </div>
+        </div>
+
+        <!-- end of cart -->
+
+        <div class="total"> Total : $18.97 </div>
+        <a href="#" class="button"> Proceed </a>
+
+    </div>
+    <!--login form-->
+
+    <form action="#" class="login-form">
+        <h3> login now </h3>
+        <!--placeholder value of an input-->
+        <input type="email" placeholder="Enter your email" class="box">
+        <input type="password" placeholder="Enter your password" class="box">
+
+        <!--forgetting password-->
+
+        <p> <a href="#">Forget password</a></p>
+
+        <!--dont have account case -->
+        <p><a href="#">Not a member? Signup</a></p>
+
+        <!--LOGIN BUTTON-->
+        <input type="Submit" value="Login" class="button">
+    </form>
+</header>
