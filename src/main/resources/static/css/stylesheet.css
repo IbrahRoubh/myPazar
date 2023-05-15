@@ -384,20 +384,20 @@ box-shadow: var(--box-shadow);
   gap: 1.5rem;
 }
 
-.footer .box-container .box h3 {
+.footer .box-container .footer-box h3 {
   font-size: 1.5rem;
   color: var(--black);
   padding: 1rem 0;
 }
 
-.footer .box-container .box h3 i {
+.footer .box-container .footer-box h3 i {
 
   color: var(--green);
   font-size: 2.0rem;
 }
 
 
-.footer .box-container .box .links
+.footer .box-container .footer-box .links
 {
   display: block;
   font-size: 1.5rem;
@@ -407,7 +407,7 @@ box-shadow: var(--box-shadow);
 }
 
 
-.footer .box-container .box .links i {
+.footer .box-container .footer-box .links i {
 
   color: var(--green);
   padding: .5rem;
@@ -415,13 +415,13 @@ box-shadow: var(--box-shadow);
 }
 
 
-.footer .box-container .box .links:hover i
+.footer .box-container .footer-box .links:hover i
 {
   padding-right: 2rem;
 }
 
 
-.footer .box-container .box p
+.footer .box-container .footer-box p
 {
     line-height: 1.8rem;
   font-size: 1.5rem;
@@ -430,7 +430,7 @@ box-shadow: var(--box-shadow);
 
 }
 
-.footer .box-container .box .share a {
+.footer .box-container .footer-box .share a {
 
   border: 0px solid ;
   height: 4rem;
@@ -445,7 +445,7 @@ box-shadow: var(--box-shadow);
 }
 
 
-.footer .box-container .box .links p
+.footer .box-container .footer-box .links p
 {
   line-height: 1.8rem;
   font-size: 2.5rem;
@@ -454,13 +454,13 @@ box-shadow: var(--box-shadow);
 }
 
 
-.footer .box-container .box .share a:hover
+.footer .box-container .footer-box .share a:hover
 {
   background: var(--green);
   color: #fff;
 }
 
-.footer .box-container .box .email
+.footer .box-container .footer-box .email
 {
   margin: .7rem 0;
   padding: 1rem;
@@ -551,7 +551,7 @@ box-shadow: var(--box-shadow);
 /* Contact form */
 
 .container {
-  position: relative;
+  position: flex;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -645,7 +645,8 @@ button:hover {
 }
 
 .bodyFragments{
-  height: 100%;
+  min-height:50vh;
+  height: 80vh;
 }
 .bodyWrapper {
        min-height: 100%;

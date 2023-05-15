@@ -1,0 +1,248 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins:wght@100;600;700&display=swap');
+
+*{
+  padding : 0px;
+  margin: 0px;
+  boxsizing:border-box;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+  transition: all .2s linear;
+  font-family: 'Poppins', sans-serif;
+}
+
+html
+{
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+}
+
+body
+{
+  background: #fff;
+  width: 100%;
+  height: 100vh;
+  body
+  font-family: 'Poppins', sans-serif;
+
+}
+
+
+.aboutus {
+  display: flex;
+  align-items: center;
+  width: 85%;
+  margin-top: 80px;
+}
+
+.aboutus img {
+  flex: 0 50%;
+  max-width: 50%;
+  height: auto;
+
+}
+
+.content {
+  padding: 30px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.content h1 {
+  color : #8B0000;
+  font-size: 20px;
+  margin-top: 60px 100px;
+  text-align: center;
+}
+
+
+
+.button-container {
+
+  display: flex;
+  margin-left: 50px;
+
+}
+
+.seller-button {
+
+  border: .1rem solid black;
+  margin: 3rem 0 0;
+  display: inline-block;
+  padding: .8rem 2rem;
+  font-size: 1.7rem;
+  border-radius: .1rem;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  background: none;
+  text-align: center;
+}
+
+.buyer-button {
+
+  border: .1rem solid black;
+  margin: 3rem 0 0;
+  display: inline-block;
+  padding: .8rem 2rem;
+  font-size: 1.7rem;
+  font-weight: bold;
+  border-radius: .1rem;
+  color: black;
+  cursor: pointer;
+  background: none;
+  text-align: center;
+}
+
+.seller-button:hover {
+
+background-color: #8B0000;
+}
+
+.buyer-button:hover {
+
+background-color: #8B0000;
+}
+
+
+/* Media Queries */
+
+@media screen and (max-width: 1200px) {
+  .aboutus {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .aboutus {
+    flex-direction: column;
+    width: 100%;
+  }
+  .aboutus img {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .content h1 {
+    font-size: 16px;
+  }
+  .content p {
+    font-size: 17px;
+  }
+  .readmore-button {
+    font-size: 1.5rem;
+    padding: .8rem 2rem;
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+
+  .content h1 {
+    font-size: 14px;
+  }
+  .content p {
+    font-size: 15px;
+  }
+  .readmore-button {
+    font-size: 1.3rem;
+    padding: .10rem 1.5rem;
+  }
+}
+
+
+/*Team*/
+
+.team {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.team-content {
+  width: 100%;
+  max-width: 1350px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin-top: 4rem;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.box {
+  padding: 16px;
+  background: #eee;
+  border-radius: 1px;
+  transition: all 0.38s ease;
+  width: 250px;
+  margin: 10px;
+}
+
+.box:hover {
+  transform: translateY(-10px);
+  cursor: pointer;
+}
+
+.box img {
+  width: 100%;
+  height: auto;
+  border-radius: 1px;
+  margin-bottom: 15px;
+}
+
+.box h3 {
+  font-size: 23px;
+  font-weight: 600;
+  color: #8B0000;
+  margin-bottom: 8px;
+}
+
+.box h5 {
+  font-size: 15px;
+  font-weight: 600;
+  color: #b7b4bb;
+  margin-bottom: 15px;
+  letter-spacing: 2px;
+}
+
+.ourteam {
+  padding: 30px;
+}
+
+.ourteam h1 {
+  color: #8B0000;
+  font-size: 20px;
+  margin-top: 85px 100px;
+  text-align: center;
+}
+
+@media screen and (max-width: 767px) {
+  .team {
+    height: auto;
+  }
+
+  .team-content {
+    flex-direction: column;
+    margin-top: 2rem;
+  }
+
+  .box {
+    width: 90%;
+    margin: 1rem auto;
+  }
+
+  .ourteam h1 {
+    margin-top: 3rem;
+  }
+}

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Sign up</title>
+  <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}">
+
+  <link rel="stylesheet" href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" th:href="@{css/button.css}">
+</head>
+<body>
+
+<section id="about">
+  <div class="aboutus">
+    <img th:src="@{static/Image/signuproll.jpg}" alt="About Us Image">
+    <div class="content">
+      <h1>Please choose you roll to sign up</h1>
+      <div class="button-container">
+        <a href="signupformseller.html"><button class="seller-button">Seller</button></a>
+        <div class="button-container">
+          <a href="signupform.html"><button class="buyer-button">Buyer</button></a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+<script th:src="@{js/app.js}"></script>
+</body>
+</html>

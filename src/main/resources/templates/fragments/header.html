@@ -1,14 +1,14 @@
 <header class="header" xmlns:th="http://www.w3.org/1999/xhtml">
-    <a href="#" class="logo"> <i class="fas fa-shopping-bag"></i> Pazar </a>
+    <a th:href="@{/}" class="logo"> <i class="fas fa-shopping-bag"></i> Pazar </a>
 
     <nav class="navbar">
 
         <a th:href="@{/home}">Home</a>
         <a th:href="@{/aboutUs}">AboutUs</a>
-        <a href="contactusform.html">ContactUs</a>
+        <a th:href="@{/contactUs}">ContactUs</a>
         <a href="#Sellers">Sellers</a>
         <a href="#categories">categories</a>
-        <a href="Secondpage.html">FAQ</a> |
+        <a href="#">FAQ</a> |
 
     </nav>
 
@@ -16,8 +16,10 @@
 
         <div class="fa fa-bars" id="Menu-button"></div>
         <div class="fa fa-search" id="search-button"></div>
-        <div class="fa fa-shopping-cart" id="cart-button"></div>
-        <div class="fa fa-user" id="login-button" th:if="${not #authentication.isAuthenticated()}"></div>
+        <div class="fa fa-shopping-cart" id="cart-button" th:if="${#authorization.expression('isAuthenticated()')}"></div>
+        <a th:href="@{/sellerOrBuyer}" th:unless="${#authorization.expression('isAuthenticated()')}">
+            <div class="fa fa-user" id="login-button"></div>
+        </a>
 
     </div>
 

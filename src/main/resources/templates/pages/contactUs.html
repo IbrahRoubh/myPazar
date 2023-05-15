@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Us</title>
+    <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}">
+    <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{css/stylesheet.css}">
+</head>
+
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="container">
+    <div class="container-box">
+        <div class="left"></div>
+        <div class="right">
+            <h2>Contact Us</h2>
+            <input type="text" class="filed" placeholder="Enter Your Name">
+            <input type="email" class="filed" placeholder="Enter Your Email">
+            <input type="email" class="filed" placeholder="Enter Your Phone Number">
+            <textarea class="filed" name="message" placeholder="Message"></textarea>
+
+            <input type="Submit" value="Send" class="button">
+        </div>
+    </div>
+</div>
+<div th:replace="~{fragments/footer :: footer}"></div>
+<script th:src="@{js/app.js}"></script>
+</body>
+</html>

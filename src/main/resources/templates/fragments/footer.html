@@ -1,6 +1,6 @@
-<footer class="footer">
+<footer class="footer" xmlns:th="http://www.w3.org/1999/xhtml">
   <div class="box-container">
-    <div class="box">
+    <div class="footer-box">
 
       <h3>MY PAZAR <i class="fa fa-shopping-bag"></i></h3>
       <p> SOCIAL MEDIA </p>
@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div class="box">
+    <div class="footer-box">
 
       <h3> Contact info </h3>
 
@@ -24,20 +24,20 @@
     </div>
 
 
-    <div class="box">
+    <div class="footer-box">
 
       <h3> Links </h3>
 
-      <a href="main.html" class="links"> <i class="fa fa-arrow-right"></i> Home </a>
-      <a href="Aboutus.html" class="links"> <i class="fa fa-arrow-right"></i> AboutUS </a>
-      <a href="#" class="links"> <i class="fa fa-arrow-right"></i> Contact us  </a>
+      <a th:href="@{/home}" class="links"> <i class="fa fa-arrow-right"></i> Home </a>
+      <a th:href="@{/aboutUs}" class="links"> <i class="fa fa-arrow-right"></i> AboutUS </a>
+      <a th:href="@{/contactUs}" class="links"> <i class="fa fa-arrow-right"></i> Contact us  </a>
       <a href="#" class="links"> <i class="fa fa-arrow-right"></i> seller </a>
       <a href="#" class="links"> <i class="fa fa-arrow-right"></i> Categories </a>
       <a href="#" class="links"> <i class="fa fa-arrow-right"></i> FAQ </a>
 
     </div>
 
-    <div class="box">
+    <div class="footer-box">
 
       <h3> For more information </h3>
 
