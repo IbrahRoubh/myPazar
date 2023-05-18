@@ -1,32 +1,44 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.w3.org/1999/xhtml">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Contact Us</title>
+    <title>Species</title>
     <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}">
     <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/static/css/stylesheet.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/Species.css}">
 </head>
 
 <body>
+
 <div th:replace="~{fragments/header :: header}"></div>
 
-<div class="container">
-    <div class="container-box">
-        <div class="left"></div>
-        <div class="right">
-            <h2>Contact Us</h2>
-            <input type="text" class="filed" placeholder="Enter Your Name">
-            <input type="email" class="filed" placeholder="Enter Your Email">
-            <input type="email" class="filed" placeholder="Enter Your Phone Number">
-            <textarea class="filed" name="message" placeholder="Message"></textarea>
+<div class="main-page">
+    <div class="Species-header">
+    <h3>Shop with <span> our category </span> </h3>
+    <p>variety's the very spice of life, That gives it all its flavor.</p>
+</div>
 
-            <input type="Submit" value="Send" class="button">
+    <div class="MainContainer">
+        <div class ="Species-container" th:each="species : ${speciesList}">
+            <div class="Speciesimg">
+                <img src="Image/.png">
+            </div>
+            <div class="Speciestitle">
+                <h2 th:text="${species.name}"> </h2>
+            </div>
         </div>
     </div>
+
+    <div class="Species-footer">
+
 </div>
+</div>
+
 <div th:replace="~{fragments/footer :: footer}"></div>
 <script th:src="@{/static/js/app.js}"></script>
 </body>
+
 </html>

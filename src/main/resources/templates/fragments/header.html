@@ -4,30 +4,37 @@
     <nav class="navbar">
 
         <a th:href="@{/home}">Home</a>
-        <a th:href="@{/aboutUs}">AboutUs</a>
-        <a th:href="@{/contactUs}">ContactUs</a>
+        <a th:href="@{/aboutUs}">About Us</a>
+        <a th:href="@{/categories}">categories</a>
         <a href="#Sellers">Sellers</a>
-        <a href="#categories">categories</a>
-        <a href="#">FAQ</a> |
+        <a th:href="@{/FAQ}">FAQ</a>
+        <a th:href="@{/contactUs}">Contact Us</a> |
 
     </nav>
 
     <div class="icons">
-
         <div class="fa fa-bars" id="Menu-button"></div>
         <div class="fa fa-search" id="search-button"></div>
         <div class="fa fa-shopping-cart" id="cart-button" th:if="${#authorization.expression('isAuthenticated()')}"></div>
-        <a th:href="@{/sellerOrBuyer}" th:unless="${#authorization.expression('isAuthenticated()')}">
+        <div class="dropdown" th:if="${#authorization.expression('isAuthenticated()')}">
+            <div class="fa fa-user" id="user-icon"></div>
+            <ul class="droplist">
+                <li class="item"><i class="fas fa-edit"></i><p>Profile</p></li>
+                <li class="item"><i class="fas fa-clipboard-list"></i><p>My Orders</p></li>
+                <li class="item"><i class="fas fa-history"></i><p>Previous Orders</p></li>
+                <li class="item"><i class="fas fa-cog"></i><p>setting</p></li>
+                <li class="item"><i class="fas fa-sign-out-alt"></i><p>log out</p></li>
+            </ul>
+        </div>
+        <a th:href="@{/login}" th:unless="${#authorization.expression('isAuthenticated()')}">
             <div class="fa fa-user" id="login-button"></div>
         </a>
-
     </div>
 
     <form class="search-form">
         <input type="search" id="search-box" placeholder="search">
         <label for="search-box"class="fa fa-search"> </label>
     </form>
-
 
     <div class="cart">
 

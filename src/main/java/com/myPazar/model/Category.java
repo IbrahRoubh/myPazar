@@ -5,21 +5,22 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-public class Product {
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
-    double price;
-    String code;
-    String unit;
-    int count;
+    @OneToMany(mappedBy = "category")
+    List<Species> speciesList;
 
-    @ManyToOne
-    Species species;
-    //TODO-1 : add the relationship
+    //TODO-1: we should add the pic parameter
+    public Category(String name) {
+        this.name = name;
+    }
 }

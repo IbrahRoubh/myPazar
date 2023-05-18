@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Category</title>
+  <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}">
+
+  <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" th:href="@{/static/css/category.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/static/css/stylesheet.css}">
+</head>
+
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="main-page">
+  <div class="category-header">
+    <h3>Shop with <span> our category </span> </h3>
+    <p>Feel free to check our category to find more and more different products that suits your taste.</p>
+  </div>
+
+  <div class=" categories" id="categories">
+    <a class ="category-container" th:each="category : ${categoriesList}" th:href="@{'/categories/{categoryName}'(categoryName=${category.name})}">
+      <div class="categoryimg">
+        <img src="Image/corn.png">
+      </div>
+      <div class="categorytitle">
+        <h2 th:text="${category.name}">  </h2>
+      </div>
+    </a>
+  </div>
+
+  <div class="category-footer">
+
+  </div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+<script th:src="@{/static/js/app.js}"></script>
+</body>
+</html>

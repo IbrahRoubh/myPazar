@@ -20,19 +20,6 @@ public class MainController {
     @GetMapping("/sellerOrBuyer")
     public String sellerOrBuyer(){return "pages/sellerOrBuyer";}
 
-    @GetMapping("/Customer/Login")
-    public String customerLogin(){return "pages/";}
-
-    @GetMapping("/Customer/Signup")
-    public String customerSignUp(){
-        return "pages/";
-    }
-
-    @GetMapping("/Seller/Login")
-    public String sellerLogin(){
-        return "pages/";
-    }
-
-    @GetMapping("/Seller/Signup")
-    public String sellerSignUp(){ return "pages/";}
+    @GetMapping("/FAQ")
+    public String FAQ(){return "pages/faq";}
 }

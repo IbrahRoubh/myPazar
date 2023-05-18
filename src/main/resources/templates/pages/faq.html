@@ -1,24 +1,17 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Pazar</title>
+    <title>FAQ</title>
     <link rel="stylesheet" type="text/css" th:href="@{/static/css/stylesheet.css}">
     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css}" />
 </head>
+
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
-    <section class="home" id="home">
 
-        <div class="content">
 
-            <h3>Welcome to <span> my pazar </span> </h3>
-            <p>Online market websites provide a platform for users to buy and sell products and services online from the comfort of their own homes.</p>
-
-            <a href="#" class="button"> Shop now </a>
-        </div>
-    </section>
 
 <div th:replace="~{fragments/footer :: footer}"></div>
 <script type="text/javascript" th:src="@{/static/js/app.js}"></script>

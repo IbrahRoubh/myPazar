@@ -1,9 +1,11 @@
 package com.myPazar.repository;
 
-import com.myPazar.model.Product;
+import com.myPazar.model.Customer;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface ProductRepo extends JpaRepository<Product,Long>{
+public interface CustomerRepo extends JpaRepository<Customer, Long> {
+    Customer findByEmail(String customerEmail);
 }
+

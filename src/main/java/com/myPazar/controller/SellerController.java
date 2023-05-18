@@ -5,11 +5,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class SellersController {
+@RequestMapping("/seller")
+public class SellerController {
     @Autowired
     SellerService sellerService;
+
+
+    @GetMapping("/Login")
+    public String sellerLogin(){
+        return "pages/";
+    }
+
+    @GetMapping("/Signup")
+    public String sellerSignUp(){ return "pages/";}
 
     @GetMapping("")
     public String loadSellers(Model model){

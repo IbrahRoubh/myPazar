@@ -10,8 +10,6 @@
   --outline: .1rem soild rgba(0, 0, 0, 1.0);
 }
 
-
-
 *{
   padding : 0px;
   margin: 0px;
@@ -45,7 +43,6 @@ section
   padding: 2rem 9%;
 }
 
-
 .heading
 {
   text-align: center;
@@ -54,8 +51,6 @@ section
   font-smooth: 3.5rem;
   color: var(--black);
 }
-
-
 
 .button
 {
@@ -70,6 +65,7 @@ section
   background: none;
 
 }
+
 .button:hover
 {
   background: var(--green);
@@ -80,6 +76,7 @@ section
 {
   border: 0px solid;
   position: fixed;
+  height: 90;
   top: 0;
   left: 0;
   right: 0;
@@ -162,7 +159,6 @@ box-shadow: var(--box-shadow);
   right: 2rem;
   transition: .4s linear;
 }
-
 
 .header .search-form input
 {
@@ -282,7 +278,6 @@ box-shadow: var(--box-shadow);
   cursor: pointer;
 }
 
-
 .header .login-form.active
 {
   right: 2rem;
@@ -295,6 +290,7 @@ box-shadow: var(--box-shadow);
   text-transform: uppercase;
   color: var(--black);
 }
+
 .header .login-form .box
 {
   border: 1px solid;
@@ -648,7 +644,77 @@ button:hover {
   min-height:50vh;
   height: 80vh;
 }
+
 .bodyWrapper {
        min-height: 100%;
        margin-bottom: -50px;
      }
+
+.main-page{
+   margin-top: 86px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.droplist {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 20rem;
+  background-color: white;
+  box-shadow: 0px 0px 100px rgba(20, 18, 18, 0.25);
+  border-radius: 0.325rem;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  border: 1px solid black;
+}
+
+.dropdown:hover .droplist {
+  opacity: 1;
+  visibility: visible;
+}
+
+.droplist li {
+  list-style-type: none;
+  padding: 0.625rem 0 0.5rem;
+  border-bottom: 1px solid black;
+}
+
+.droplist li:last-child {
+  border-bottom: none; /* Remove the bottom border from the last item */
+}
+
+.item {
+  display: flex;
+  align-items: center;
+  gap: 0.725rem;
+  cursor: pointer;
+  padding: 0.rem 1.5rem;
+  margin-left : 20px;
+}
+
+.item i {
+  font-size: 1.5rem;
+  color: black;
+}
+
+.item p {
+  font-size: 1.5rem;
+  color: black;
+  cursor: pointer;
+  margin: 0.4rem 0;
+}
+
+.item:hover p {
+  color: red;
+  transform: scale(1.08) translateY(-2px);
+}
+
+.item:hover p:not(.fas) {
+  color: red;
+  transform: scale(1.08) translateY(-2px);
+}
