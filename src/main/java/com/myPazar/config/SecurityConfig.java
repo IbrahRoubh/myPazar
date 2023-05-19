@@ -36,9 +36,12 @@ public class SecurityConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.authorizeHttpRequests( auth-> auth.anyRequest().permitAll())
                 .formLogin(form -> form.loginPage("/login")
-                                .usernameParameter("email-buyer")
-                                .passwordParameter("password-buyer")
+                                .usernameParameter("email")
+                                .passwordParameter("password")
                                 .defaultSuccessUrl("/")
+                ).logout( logout->
+                logout.logoutUrl("/logout")
+                        .logoutSuccessUrl("/")
                 );
         return http.build();
     }

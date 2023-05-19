@@ -17,6 +17,8 @@ public class Seller {
     String password;
     String phone;
     String location;
+    String profilePic;
+
     //TODO-1 : add pic and work permit
     //TODO-2 : add the relationship
 }

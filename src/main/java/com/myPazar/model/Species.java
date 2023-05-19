@@ -16,7 +16,8 @@ public class Species {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
-    //TODO-1: add pic
+    String pic;
+
     @ManyToOne
     Category category;
     @OneToMany(mappedBy = "species")

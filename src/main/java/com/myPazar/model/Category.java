@@ -16,10 +16,10 @@ public class Category {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
+    String pic;
+
     @OneToMany(mappedBy = "category")
     List<Species> speciesList;
-
-    //TODO-1: we should add the pic parameter
     public Category(String name) {
         this.name = name;
     }

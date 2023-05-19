@@ -328,7 +328,7 @@ box-shadow: var(--box-shadow);
   border: 0px solid;
   display: flex;
   justify-content: center;
-  background: url(../image/banner2.jpg) no-repeat;
+  background: url([[@{/static/Image/banner2.jpg}]]) no-repeat;
   background-position: center;
   background-size: cover;
   padding-top: 17rem;

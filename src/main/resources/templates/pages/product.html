@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Products</title>
+  <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}">
+  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/static/css/stylesheet.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/static/css/products.css}">
+</head>
+
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="main-page">
+  <div class="product">
+    <div class="picture">
+      <img src="Image/onion.png">
+      <i class="fas fa-heart" id="heartIcon"></i>
+    </div>
+    <div class="details">
+      <p><span class="bolded">SHROUQ GROCERY</span> FRESH ONIONS</p>
+    </div>
+    <p class="price">29,99TL</p>
+  </div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+<script th:src="@{/static/js/product.js}"></script>
+<script th:src="@{/static/js/app.js}"></script>
+</body>
+</html>

@@ -18,6 +18,7 @@ public class Product {
     String code;
     String unit;
     int count;
+    String pic;
 
     @ManyToOne
     Species species;

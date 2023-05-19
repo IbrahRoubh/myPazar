@@ -23,10 +23,10 @@
                 <li class="item"><i class="fas fa-clipboard-list"></i><p>My Orders</p></li>
                 <li class="item"><i class="fas fa-history"></i><p>Previous Orders</p></li>
                 <li class="item"><i class="fas fa-cog"></i><p>setting</p></li>
-                <li class="item"><i class="fas fa-sign-out-alt"></i><p>log out</p></li>
+                <a th:href="@{/logout}"><li class="item"><i class="fas fa-sign-out-alt"></i><p>log out</p></li></a>
             </ul>
         </div>
-        <a th:href="@{/login}" th:unless="${#authorization.expression('isAuthenticated()')}">
+        <a th:href="@{/customer/login}" th:unless="${#authorization.expression('isAuthenticated()')}">
             <div class="fa fa-user" id="login-button"></div>
         </a>
     </div>
@@ -41,7 +41,7 @@
         <!--ADD ITEMS TO THE CART -->
         <div class="box">
             <i class="fa fa-trash"> </i>
-            <img src="image/downlo11ad.jpg">
+            <img th:src="@{/static/Image/downlo11ad.jpg}">
             <div class="content">
                 <h3> Banana </h3>
                 <span class="price">$4.5/-</span>

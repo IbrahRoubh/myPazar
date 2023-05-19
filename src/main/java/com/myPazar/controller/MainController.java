@@ -1,6 +1,9 @@
 package com.myPazar.controller;
 
 
+import jakarta.servlet.ServletException;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 
@@ -22,4 +25,10 @@ public class MainController {
 
     @GetMapping("/FAQ")
     public String FAQ(){return "pages/faq";}
+
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request)throws ServletException {
+        request.logout();
+        return "redirect:/home";
+    }
 }

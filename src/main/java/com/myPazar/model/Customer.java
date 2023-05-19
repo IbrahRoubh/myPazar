@@ -21,8 +21,8 @@ public class Customer {
     String password;
     String phone;
     String location;
+    String profilePic;
     //TODO-1 : add the relationship
-
 
     public Customer(String email, String name, String password, String phone, String location) {
         this.email = email;
