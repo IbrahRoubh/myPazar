@@ -6,14 +6,183 @@
     <title>FAQ</title>
     <link rel="stylesheet" type="text/css" th:href="@{/static/css/stylesheet.css}">
     <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css}" />
+    <style type="text/css">
+      * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Roboto", sans-serif;
+}
+
+.wrapperfaq {
+  max-width: 75%;
+  margin: auto;
+  margin-top: 120px;
+}
+
+.wrapperfaq > p,
+.wrapperfaq > h1 {
+  margin: 1.5rem 0;
+  text-align: center;
+}
+
+.wrapperfaq > h1 {
+  letter-spacing: 3px;
+}
+
+.accordion {
+  background-color: white;
+  color: rgba(0, 0, 0, 0.8);
+  cursor: pointer;
+  font-size: 1.2rem;
+  width: 100%;
+  padding: 2rem 2.5rem;
+  border: none;
+  outline: none;
+  transition: 0.4s;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: bold;
+}
+
+.accordion i {
+  font-size: 1.6rem;
+}
+
+.active,
+.accordion:hover {
+  background-color: #Faf4f4;
+}
+.pannel {
+  padding: 0 2rem 2.5rem 2rem;
+  background-color: white;
+  overflow: hidden;
+  background-color: #Faf4f4;
+  display: none;
+}
+.pannel p {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 1.2rem;
+  line-height: 1.4;
+}
+
+.faq {
+  margin: 10px 0;
+}
+.faq.active {
+  border: none;
+}
+
+    </style>
 </head>
 
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
 
+<div class="main-page">
+    <div class="wrapperfaq">
 
+        <h1>Frequently Asked Questions</h1>
+
+        <div class="faq">
+            <button class="accordion">
+                How long does it take for my order to be delivered?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+                <p>
+                    The delivery time depends on various factors such as your location, the type of product, and the delivery service chosen. Generally, we strive to deliver your order within 30 mintuts-3 hours.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="accordion">
+                What are your delivery charges?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+                <p>
+                    Our delivery charges vary based on the sellers.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="accordion">
+                What happens if I'm not available to receive the delivery?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+                <p>
+                    If you're unavailable at the time of delivery, our delivery partner will usually make a second attempt. If they are still unable to deliver, they may leave a notification with instructions for rescheduling or picking up your package from a nearby location.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="accordion">
+                What should I do if my package is damaged or missing?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+                <p>
+                    If your package arrives damaged, please notify us immediately.
+                    We may require photos or other evidence of the damage.
+                    In case of a missing package, please contact our customer support, and we will investigate the issue and assist you accordingly.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="accordion">
+                Can I schedule a specific delivery time?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+                <p>
+                    Unfortunatlly not yet.
+                </p>
+            </div>
+        </div>
+
+        <div class="faq">
+            <button class="accordion">
+                How can I contact your customer support for delivery-related inquiries?
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="pannel">
+                <p>
+                    ou can reach our customer support team through phone or email.
+                    Our contact information is available on our website's "About Us" page.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
 
 <div th:replace="~{fragments/footer :: footer}"></div>
 <script type="text/javascript" th:src="@{/static/js/app.js}"></script>
+<script>
+      var acc = document.getElementsByClassName("accordion");
+      var i;
+
+      for (i = 0; i < acc.length; i++) {
+        acc[i].addEventListener("click", function () {
+          this.classList.toggle("active");
+          this.parentElement.classList.toggle("active");
+
+          var pannel = this.nextElementSibling;
+
+          if (pannel.style.display === "block") {
+            pannel.style.display = "none";
+          } else {
+            pannel.style.display = "block";
+          }
+        });
+      }
+    </script>
 </body>
 </html>
+

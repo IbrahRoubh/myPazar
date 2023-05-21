@@ -1,0 +1,263 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins:wght@100;600;700&display=swap');
+
+body {
+  overflow-x: hidden;
+  padding: 0;
+  margin: 0;
+}
+
+.container2 {
+  background: #eee;
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  display: flex;
+}
+
+.rightbox {
+  flex-basis: 85%;
+ }
+
+.leftbox {
+  flex-basis: 15%;
+  background: #8B0000;
+  box-shadow: 3px 3px 10px rgba(119, 119, 119, 0.5);
+}
+
+.leftbox nav a {
+  list-style: none;
+  padding: 35px;
+  color: #fff;
+  font-size: 1.3rem;
+  display: block;
+  transition: all .3s ease-in-out;
+  align-items: center;
+ }
+
+.leftbox nav a:hover
+ {
+  color: black;
+  cursor: pointer;
+  transform: scale(1.2);
+ }
+
+.leftbox nav a:first-child
+  {
+    margin-top: 7px;
+  }
+
+.leftbox nav a.active
+ {
+  color : #eee;
+ }
+
+.picShow{
+  flex-basis: 30%;
+  float: left;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.picShow img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+
+.infoShow{
+  flex-basis: 70%;
+}
+
+ .tabShow
+ {
+  transition: all .5s ease-in;
+  flex-basis: 70%;
+  margin-left: 10%;
+  margin-top: 10%;
+  width: 100%;
+ }
+
+.leftbox h1, .rightbox h1
+ {
+  font-family: 'Poppins', sans-serif;
+  color: #8B0000;
+  font-size: 2.2rem;
+  margin-bottom: 35px;
+ }
+
+ .leftbox h2, .rightbox h2
+  {
+   color: black;
+   font-family: 'Poppins', sans-serif;
+   text-transform: uppercase;
+   font-size: 14px;
+   letter-spacing: 1px;
+   margin-right: 2px;
+   margin-top: 10px;
+ }
+
+ .input{
+  border: 1px solid #ccc;
+  width: 20%;
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  padding: 7px 0;
+  color: black;
+  outline: none ;
+ }
+
+.ButtonProfile {
+  padding: 5px 5px;
+  font-size: 0.7rem;
+  background: white;
+  font-family: 'Poppins', sans-serif;
+  color: #8B0000;
+  cursor: pointer;
+  margin-top: 15px;
+  border: none;
+}
+
+.ButtonProfile:hover
+{
+  background: #8B0000;
+  color: #fff;
+}
+
+.innerContaner{
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.edit-button {
+    padding: 5px 10px;
+    background-color: #8B0000;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+.payinfo{
+    flex-basis: 60%;
+}
+.cartShow{
+  flex-basis: 40%;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.card {
+  width: 300px;
+  height: 200px;
+  background-color: #8B0000;
+  color: white;
+  border-radius: 10px;
+  perspective: 1000px;
+  position: relative;
+  border: 1px solid black;
+}
+
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  transition: transform 0.6s;
+}
+
+.card:hover .card-inner {
+  transform: rotateY(180deg);
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.card-front {
+  transform: rotateY(0deg);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.card-logo {
+  width: 40px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+}
+
+.card-pic {
+  width: 50px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+}
+
+.card-info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+}
+
+.card-info span {
+  display: block;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+.card-cvv {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 14px;
+}
+
+.card-cvv span:first-child {
+  font-weight: bold;
+}
+
+.card-number {
+  margin-bottom: 20px;
+  font-size: 20px;
+}
+
+.updateTable{
+  border-collapse: collapse;
+  border: 1px solid #000;
+  width:70%;
+  background-color: #8B0000;
+}
+
+.updateTable td{
+  padding-left: 20px;
+  padding-bottom: 15px;
+  padding-top: 5px;
+}
+
+
+.updateTable caption {
+  font-weight: bold;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.show {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}

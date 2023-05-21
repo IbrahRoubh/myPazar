@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>User Settings</title>
+  <link th:href="@{https://fonts.googleapis.com/css?family=Poppins&display=swap}" rel="stylesheet">
+  <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" th:href="@{/static/css/userSetting.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/static/css/stylesheet.css}">
+</head>
+
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="main-page">
+  <div class="container2">
+    <div class="leftbox">
+      <nav>
+        <a th:href="@{/customer/settings/profile}" class="tab active">
+          <i class="fa fa-user"></i>
+        </a>
+        <a th:href="@{/customer/settings/payment}" class="tab">
+          <i class="fa fa-credit-card"></i>
+        </a>
+        <a th:href="@{/customer/settings/order}" class="tab">
+          <i class="fa fa-clipboard-list"></i>
+        </a>
+        <a th:href="@{/customer/settings/previousOrder}" class="tab">
+          <i class="fa fa-history"></i>
+        </a>
+        <a th:href="@{/customer/settings/setting}" class="tab">
+          <i class="fa fa-cog"></i>
+        </a>
+      </nav>
+    </div>
+    <div class="rightbox">
+      <div  th:class="${part == 1} ? 'show Profile tabShow' : 'hidden'">
+        <div class="innerContaner">
+          <div class="picShow">
+            <img th:src="@{/static/Image/profile.jpg}" alt="ProfilePhoto">
+            <button class="edit-button">change pic</button>
+          </div>
+          <div class="infoShow">
+            <h1>Personal Info</h1>
+            <h2>Name</h2>
+            <input type="text" class="input" th:value="${name}" readonly>
+
+            <h2>Email address</h2>
+            <input type="text" class="input" th:value="${email}" readonly>
+
+            <h2>Phone Number</h2>
+            <input type="text" class="input" th:value="${phone}" readonly>
+
+            <h2>Address</h2>
+            <input type="text" class="input" th:value="${location}" readonly>
+          </div>
+        </div>
+      </div>
+
+      <div  th:class="${part == 2} ? 'show Payment tabShow' : 'hidden'">
+        <div class="innerContaner">
+          <div class="cartShow">
+            <div class="card">
+              <div class="card-inner">
+                <div class="card-front">
+                  <img th:src="@{/static/Image/card.jpg}" class="card-logo" alt="Card Logo">
+                  <div class="card-info">
+                    <div class="card-number">
+                      <span th:text="${cardNum}"></span>
+                    </div>
+                    <div class="card-holder">
+                      <span>Cardholder Name</span>
+                      <span th:text="${userName}"></span>
+                    </div>
+                    <div class="card-expiry">
+                      <span>Expiration Date</span>
+                      <span th:text="${expirationDate}"></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="card-back">
+                  <img th:src="@{/static/Image/card.jpg}" class="card-logo" alt="Back of Card">
+                  <div class="card-cvv">
+                    <span>CVV</span>
+                    <span th:text="${cvv}"></span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="payinfo">
+            <h1>Payment Info</h1>
+            <h2>Name</h2>
+            <input type="text" class="input" th:value="${userName}">
+
+            <h2>Card number</h2>
+            <input type="text" class="input" th:value="${cardNum}">
+
+            <h2>CVV</h2>
+            <input type="text" class="input" th:value="${cvv}">
+
+            <h2>Expiration Date</h2>
+            <input type="text" class="input" th:value="${expirationDate}">
+
+            <button class="ButtonProfile"> Update </button>
+          </div>
+        </div>
+      </div>
+
+      <div  th:class="${part == 3} ? 'show Order tabShow' : 'hidden'">
+        <h1> Order info </h1>
+        <h2>Orderno</h2>
+        <input type="text" class="input" value="">
+
+
+        <button class="ButtonProfile"> Track order </button>
+      </div>
+
+      <div  th:class="${part == 4} ? 'show Previous tabShow' : 'hidden'">
+        <h1> Previous order</h1>
+        <h2>Order no </h2>
+        <input type="text" class="input" value="">
+        <button class="ButtonProfile">Re-Order</button>
+      </div>
+
+      <div th:class="${part == 5} ? 'show setting tabShow' : 'hidden'" style="margin-top: 5%;">
+        <h1> Account setting </h1>
+
+        <table class="updateTable" style="margin-bottom: 5%;">
+          <caption>Profile info</caption>
+          <tbody>
+          <tr>
+            <td>
+              <h2>Name</h2>
+              <input type="text" th:value="${name}">
+            </td>
+            <td>
+              <h2>Email</h2>
+              <input type="email" th:value="${email}">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h2>Phone number</h2>
+              <input type="text"  th:value="${phone}">
+            </td>
+            <td>
+              <h2>Location</h2>
+              <input type="text" th:value="${location}">
+            </td>
+            <td>
+              <button class="ButtonProfile"> Update </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+
+        <table class="updateTable">
+          <caption>Password info</caption>
+          <tbody>
+          <tr>
+            <td>
+              <h2>Current Password</h2>
+              <input type="text"  value="">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h2>New Password</h2>
+              <input type="text"  value="">
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <h2>Confirm new password</h2>
+              <input type="text"  value="">
+            </td>
+            <td>
+              <button class="ButtonProfile"> Update </button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script th:src="@{/static/js/userSetting.js}"></script>
+<script type="text/javascript" th:src="@{/static/js/app.js}"></script>
+</body>
+</html>

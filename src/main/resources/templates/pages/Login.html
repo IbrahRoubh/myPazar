@@ -11,7 +11,7 @@
 <body>
 <div class="container4" id="container4">
     <div class="form-container seller-container">
-        <form action="">
+        <form th:action="@{/customer/signup}" method="post">
             <h1> Sign up </h1>
             <span>or signup with your account</span>
             <div class="social-media">
@@ -21,10 +21,11 @@
             </div>
             <input type="text" name="name" placeholder="Name">
             <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
-            <input type="password" name="password" placeholder="Confirm Password">
             <input type="phone" name="phone" placeholder="Phone no">
-            <button> Signup </button>
+            <input type="text" name="location" placeholder="Location">
+            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="coPassword" placeholder="Confirm Password">
+            <button type="submit"> Signup </button>
         </form>
     </div>
     <div class="form-container buyer-container">
@@ -38,7 +39,7 @@
             <span>or login with your account</span>
             <input type="email" name="email" placeholder="Email">
             <input type="password" name="password" placeholder="Password">
-            <a href="" class="forget-password">Forget Password</a>
+            <a th:href="@{/forgetPassword}" class="forget-password">Forget Password</a>
             <input type="submit" value="Log in" class="">
         </form>
     </div>

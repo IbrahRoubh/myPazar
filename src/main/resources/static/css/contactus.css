@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.new-container{
+  align-items: center;
+  width: 100%;
+  background: #eee;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.15);
+}
+
+.new-container .new-content{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 25px 20px;
+}
+
+.new-content .new-image-box{
+  max-width: 55%;
+}
+
+.new-content .new-image-box img{
+  width: 100%;
+}
+
+.new-content .new-topic{
+  font-size: 22px;
+  font-weight: 500;
+  color: #8B0000;
+}
+
+.new-content form{
+  width: 40%;
+  margin-right: 30px;
+}
+
+.new-content .new-input-box{
+  height: 50px;
+  width: 100%;
+  margin: 16px 0;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.new-content .new-input-box input {
+  height: 100%;
+  width: 100%;
+  border-radius: 6px;
+  font-size: 16px;
+  outline: none;
+  padding-left: 16px;
+  background: #fff;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  color: darkgray;
+}
+
+.new-content .new-input-box label {
+left: 18px;
+top: 50%;
+color: #808080;
+font-size: 15px;
+pointer-events: none;
+transform: translateY(-50%);
+transition: all 0.3s ease;
+}
+
+.new-content .new-message-box textarea {
+height: 100%;
+width: 100%;
+resize: none;
+background: #fff;
+border: 2px solid transparent;
+border-radius: 6px;
+outline: none;
+transition: all 0.3s ease;
+color: black;
+padding: 10px;
+font-size: 16px;
+}
+
+.new-content .new-message-box textarea:focus {
+border-color: #8B0000;
+background-color: #fff;
+color: #8B0000;
+}
+
+.new-content .new-message-box label{
+font-size: 16px;
+color: #eee;
+left: 18px;
+top: 6px;
+pointer-events: none;
+transition: all 0.3s ease;
+}
+
+.new-content .new-message-box textarea:focus ~ label{
+left: 12px;
+top: -10px;
+color: #fff;
+font-size: 14px;
+background: #fff;
+}
+
+.new-content .new-input-box input[type="submit"]{
+color:#fff;
+background: #8B0000;
+padding-left: 0;
+font-size: 18px;
+font-weight: 500;
+cursor: pointer;
+letter-spacing: 1px;
+transition: all 0.3s ease;
+}
+
+.new-content .new-input-box input[type="submit"]:hover{
+background-color: white;
+color: #8b0000;
+}
+
+.new-message-box {
+min-height: 150px;
+border-radius: 1px solid black;
+padding: 5px;
+height: 30vh;
+}
+
+.new-message-box input {
+height: 100%;
+width: 100%;
+resize: none;
+background: #fff;
+border: 2px solid transparent;
+border-radius: 6px;
+outline: none;
+transition: all 0.3s ease;
+color: darkgray;
+padding: 10px;
+font-size: 16px;
+box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+@media (max-width:1000px) {
+.new-content .new-image-box{
+max-width: 70%;
+}
+.new-content{
+padding: 10px 0;
+}
+}
+
+@media (max-width:900px) {
+.new-content .new-image-box{
+display: none;
+}
+.new-content form{
+width: 100%;
+margin-left: 30px;
+}
+}

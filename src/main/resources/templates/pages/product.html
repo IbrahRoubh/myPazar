@@ -14,16 +14,18 @@
 <div th:replace="~{fragments/header :: header}"></div>
 
 <div class="main-page">
-  <div class="product">
-    <div class="picture">
-      <img src="Image/onion.png">
-      <i class="fas fa-heart" id="heartIcon"></i>
+  <div class="MainContainer">
+    <div class="product" th:each="product: ${products}">
+      <div class="picture">
+        <img th:src="@{${product.pic}}">
+      </div>
+      <div class="details">
+        <p th:text="${product.description}"><span class="bolded" th:text="${product.name}"></span></p>
+      </div>
+      <p class="price" th:text="${product.price}"></p>
     </div>
-    <div class="details">
-      <p><span class="bolded">SHROUQ GROCERY</span> FRESH ONIONS</p>
-    </div>
-    <p class="price">29,99TL</p>
   </div>
+
 </div>
 
 <div th:replace="~{fragments/footer :: footer}"></div>

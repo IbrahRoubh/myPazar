@@ -7,25 +7,40 @@
     <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}">
     <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/static/css/stylesheet.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/contactus.css}">
 </head>
 
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
 
-<div class="container">
-    <div class="container-box">
-        <div class="left"></div>
-        <div class="right">
-            <h2>Contact Us</h2>
-            <input type="text" class="filed" placeholder="Enter Your Name">
-            <input type="email" class="filed" placeholder="Enter Your Email">
-            <input type="email" class="filed" placeholder="Enter Your Phone Number">
-            <textarea class="filed" name="message" placeholder="Message"></textarea>
-
-            <input type="Submit" value="Send" class="button">
+<div class="main-page">
+    <div class="new-container">
+        <div class="new-content">
+            <div class="new-image-box">
+                <img th:src="@{/static/Image/contactus1.jpg}" alt="">
+            </div>
+            <form action="#">
+                <div class="new-topic">Send us a message</div>
+                <div class="new-input-box">
+                    <input type="text" name="name" placeholder="Name">
+                </div>
+                <div class="new-input-box">
+                    <input type="text" name="name" placeholder="Email">
+                </div>
+                <div class="new-input-box">
+                    <input type="text" name="phone" placeholder="Phone no">
+                </div>
+                <div class="new-message-box">
+                    <input type="text" name="name" placeholder="Message">
+                </div>
+                <div class="new-input-box">
+                    <input type="submit" value="Send Message">
+                </div>
+            </form>
         </div>
     </div>
 </div>
+
 <div th:replace="~{fragments/footer :: footer}"></div>
 <script th:src="@{/static/js/app.js}"></script>
 </body>

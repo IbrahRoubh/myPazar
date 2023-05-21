@@ -622,24 +622,6 @@ textarea {
   height: 200px;
 }
 
-button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 15px;
-  background: var(--green);
-  border: none;
-  border-radius: 20px;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  color: #fff;
-  font-size: 18px;
-  font-family: inherit;
-  cursor: pointer;
-}
-
-button:hover {
-  background: var(--black);
-}
-
 .bodyFragments{
   min-height:50vh;
   height: 80vh;

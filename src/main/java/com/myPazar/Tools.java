@@ -1,12 +1,7 @@
 package com.myPazar;
 
-import com.myPazar.model.Customer;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 import org.springframework.web.multipart.MultipartFile;
-
 import java.io.File;
 import java.time.LocalDateTime;
 import java.util.UUID;

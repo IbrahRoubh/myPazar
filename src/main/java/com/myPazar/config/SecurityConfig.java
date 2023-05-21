@@ -34,8 +34,11 @@ public class SecurityConfig {
     //        and the roles
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests( auth-> auth.anyRequest().permitAll())
-                .formLogin(form -> form.loginPage("/login")
+        http.authorizeHttpRequests( auth->
+                        auth.requestMatchers("/customer/settings/**").authenticated()
+                                .anyRequest().permitAll()
+                )
+                .formLogin(form -> form.loginPage("/customer/login")
                                 .usernameParameter("email")
                                 .passwordParameter("password")
                                 .defaultSuccessUrl("/")

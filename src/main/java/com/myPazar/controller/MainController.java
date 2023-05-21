@@ -31,4 +31,12 @@ public class MainController {
         request.logout();
         return "redirect:/home";
     }
+
+    @GetMapping("/sellerInfo")
+    public String sellerInfo(){
+        return "pages/sellerInfo";
+    }
+
+    @GetMapping("/forgetPassword")
+    public String forgetPassword(){return "pages/forgetPassword"; }
 }

@@ -6,7 +6,7 @@
         <a th:href="@{/home}">Home</a>
         <a th:href="@{/aboutUs}">About Us</a>
         <a th:href="@{/categories}">categories</a>
-        <a href="#Sellers">Sellers</a>
+        <a th:href="@{/sellerInfo}">Sellers</a>
         <a th:href="@{/FAQ}">FAQ</a>
         <a th:href="@{/contactUs}">Contact Us</a> |
 
@@ -19,10 +19,10 @@
         <div class="dropdown" th:if="${#authorization.expression('isAuthenticated()')}">
             <div class="fa fa-user" id="user-icon"></div>
             <ul class="droplist">
-                <li class="item"><i class="fas fa-edit"></i><p>Profile</p></li>
-                <li class="item"><i class="fas fa-clipboard-list"></i><p>My Orders</p></li>
-                <li class="item"><i class="fas fa-history"></i><p>Previous Orders</p></li>
-                <li class="item"><i class="fas fa-cog"></i><p>setting</p></li>
+                <a th:href="@{/customer/settings/profile}"><li class="item"><i class="fas fa-edit"></i><p>Profile</p></li></a>
+                <a th:href="@{/customer/settings/order}"><li class="item"><i class="fas fa-clipboard-list"></i><p>My Orders</p></li></a>
+                <a th:href="@{/customer/settings/previousOrder}"><li class="item"><i class="fas fa-history"></i><p>Previous Orders</p></li></a>
+                <a th:href="@{/customer/settings/setting}"><li class="item"><i class="fas fa-cog"></i><p>setting</p></li></a>
                 <a th:href="@{/logout}"><li class="item"><i class="fas fa-sign-out-alt"></i><p>log out</p></li></a>
             </ul>
         </div>
@@ -55,22 +55,4 @@
         <a href="#" class="button"> Proceed </a>
 
     </div>
-    <!--login form-->
-
-    <form action="#" class="login-form">
-        <h3> login now </h3>
-        <!--placeholder value of an input-->
-        <input type="email" placeholder="Enter your email" class="box">
-        <input type="password" placeholder="Enter your password" class="box">
-
-        <!--forgetting password-->
-
-        <p> <a href="#">Forget password</a></p>
-
-        <!--dont have account case -->
-        <p><a href="#">Not a member? Signup</a></p>
-
-        <!--LOGIN BUTTON-->
-        <input type="Submit" value="Login" class="button">
-    </form>
 </header>

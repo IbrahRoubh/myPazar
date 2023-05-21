@@ -1,9 +1,6 @@
 package com.myPazar.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -24,6 +21,8 @@ public class Customer {
     String profilePic;
     //TODO-1 : add the relationship
 
+    @OneToOne
+    BankCard bankCard;
     public Customer(String email, String name, String password, String phone, String location) {
         this.email = email;
         this.name = name;

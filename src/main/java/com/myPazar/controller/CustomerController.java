@@ -1,15 +1,16 @@
 package com.myPazar.controller;
 
 import com.myPazar.Tools;
+import com.myPazar.model.BankCard;
 import com.myPazar.model.Customer;
 import com.myPazar.repository.CustomerRepo;
 import com.myPazar.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Lazy;
+import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -20,7 +21,6 @@ import java.io.IOException;
 
 @Controller
 @RequestMapping("/customer")
-
 public class CustomerController {
     @Autowired
     private CustomerService customerService;
@@ -43,9 +43,8 @@ public class CustomerController {
 
     @PostMapping("/signup")
     public String signup(@ModelAttribute("customer") Customer customer, Model model){
-
         if(customerService.addCustomer(customer)) {
-            return "";
+            return "pages/Login";
         }
         else{return "";}
     }
@@ -61,5 +60,59 @@ public class CustomerController {
             customer.setProfilePic(picURL);
         }
         return "pages/conf";
+    }
+
+
+    @GetMapping("/settings/profile")
+    public String profileShow(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        Customer customer=customerRepo.findByEmail(userDetails.getUsername());
+        model.addAttribute("name",customer.getName());
+        model.addAttribute("email",customer.getEmail());
+        model.addAttribute("phone",customer.getPhone());
+        model.addAttribute("location",customer.getLocation());
+        model.addAttribute("part", 1);
+        return "pages/userSettings";
+    }
+
+    @GetMapping("/settings/payment")
+    public String paymentShow(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        Customer customer=customerRepo.findByEmail(userDetails.getUsername());
+        BankCard card = customer.getBankCard();
+        model.addAttribute("userName",card.getUserName());
+        model.addAttribute("cardNum",card.getCardNumber());
+        model.addAttribute("cvv",card.getCvv());
+        model.addAttribute("expirationDate",card.getExpirationDate());
+
+        model.addAttribute("part", 2);
+        return "pages/userSettings";
+    }
+
+    @GetMapping("/settings/order")
+    public String orderShow(Model model){
+        model.addAttribute("part", 3);
+        return "pages/userSettings";
+    }
+
+    @GetMapping("/settings/previousOrder")
+    public String previousOrderShow(Model model){
+        model.addAttribute("part", 4);
+        return "pages/userSettings";
+    }
+
+    @GetMapping("/settings/setting")
+    public String settingShow(Model model){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        Customer customer=customerRepo.findByEmail(userDetails.getUsername());
+        model.addAttribute("name",customer.getName());
+        model.addAttribute("email",customer.getEmail());
+        model.addAttribute("phone",customer.getPhone());
+        model.addAttribute("location",customer.getLocation());
+        model.addAttribute("part", 5);
+        return "pages/userSettings";
     }
 }

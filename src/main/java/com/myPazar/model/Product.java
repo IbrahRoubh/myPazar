@@ -19,8 +19,19 @@ public class Product {
     String unit;
     int count;
     String pic;
+    String description;
 
     @ManyToOne
     Species species;
-    //TODO-1 : add the relationship
+
+    public Product(String name, double price, String code, String unit, int count, String pic, String description, Species species) {
+        this.name = name;
+        this.price = price;
+        this.code = code;
+        this.unit = unit;
+        this.count = count;
+        this.pic = pic;
+        this.description = description;
+        this.species = species;
+    }
 }
