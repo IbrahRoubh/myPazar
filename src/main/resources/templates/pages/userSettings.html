@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -38,8 +38,8 @@
       <div  th:class="${part == 1} ? 'show Profile tabShow' : 'hidden'">
         <div class="innerContaner">
           <div class="picShow">
-            <img th:src="@{/static/Image/profile.jpg}" alt="ProfilePhoto">
-            <button class="edit-button">change pic</button>
+            <img th:src="@{${pic}}" alt="ProfilePhoto">
+            <button class="edit-button" >change pic</button>
           </div>
           <div class="infoShow">
             <h1>Personal Info</h1>
@@ -127,35 +127,36 @@
       <div th:class="${part == 5} ? 'show setting tabShow' : 'hidden'" style="margin-top: 5%;">
         <h1> Account setting </h1>
 
+        <form th:action="@{/customer/profile/update}" method="post">
         <table class="updateTable" style="margin-bottom: 5%;">
           <caption>Profile info</caption>
           <tbody>
           <tr>
             <td>
               <h2>Name</h2>
-              <input type="text" th:value="${name}">
+              <input type="text" name="name" th:value="${name}">
             </td>
             <td>
               <h2>Email</h2>
-              <input type="email" th:value="${email}">
+              <input type="email" name="email" th:value="${email}">
             </td>
           </tr>
           <tr>
             <td>
               <h2>Phone number</h2>
-              <input type="text"  th:value="${phone}">
+              <input type="text" name="phone" th:value="${phone}">
             </td>
             <td>
               <h2>Location</h2>
-              <input type="text" th:value="${location}">
+              <input type="text" name="location" th:value="${location}">
             </td>
             <td>
-              <button class="ButtonProfile"> Update </button>
+              <button class="ButtonProfile" type="submit"> Update </button>
             </td>
           </tr>
           </tbody>
         </table>
-
+        </form>
         <table class="updateTable">
           <caption>Password info</caption>
           <tbody>

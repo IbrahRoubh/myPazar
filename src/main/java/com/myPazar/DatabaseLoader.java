@@ -30,6 +30,9 @@ public class DatabaseLoader implements CommandLineRunner{
         Category category1 = new Category("fruit");
         Category category2 = new Category("clothes");
         Category category3 = new Category("milk");
+        category1.setPic("/images/fruit.jpg");
+        category2.setPic("/images/clothes.jpg");
+        category3.setPic("/images/milk.jpg");
 
         categoriesRepo.save(category1);
         categoriesRepo.save(category2);
@@ -47,11 +50,19 @@ public class DatabaseLoader implements CommandLineRunner{
         speciesRepo.save(species4);
         speciesRepo.save(species5);
 
-        Product product1 = new Product("turkish banana",15,"osa11","kg",20,"","first class onion",species3);
-        Product product2 = new Product("italian banana",25.49,"ib21","kg",12,"","fresh banana from italy",species3 );
-        Product product3 = new Product("yellow apple",7.85,"ay","kg",5,"","swite apple",species1);
+        Product product1 = new Product("turkish banana",15,"osa11","kg",20,"","first class onion",species4);
+        Product product2 = new Product("italian banana",25.49,"ib21","kg",12,"","fresh banana from italy",species4 );
+        Product product3 = new Product("yellow apple",7.85,"ay","kg",5,"","as djf ldj dlfjd ldjfd dlfjd ldjdld dldfjd ",species1);
         Product product4 = new Product("red apple",6,"ga","kg",24,"","",species1);
         Product product5 = new Product("green apple",12,"ed","kg",32,"","green apple",species1);
+
+        product1.setPic("/images/turkishBanana.jpg");
+        product2.setPic("/images/italianBanana.jpg");
+        product3.setPic("/images/yellowApple.jpg");
+        product4.setPic("/images/redApple.jpg");
+        product5.setPic("/images/greenApple.jpg");
+
+
 
         productRepo.save(product1);
         productRepo.save(product2);

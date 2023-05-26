@@ -6,8 +6,6 @@ import com.myPazar.model.Customer;
 import com.myPazar.repository.CustomerRepo;
 import com.myPazar.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -15,8 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.io.File;
 import java.io.IOException;
 
 @Controller
@@ -49,18 +45,18 @@ public class CustomerController {
         else{return "";}
     }
 
-    @PostMapping("/update")
-    public String customerUpdate(@RequestParam("profilePic") MultipartFile file) throws IOException {
-        String picURL= tools.loadPic(file);
-        if(!picURL.equalsIgnoreCase(""))
-        {
-            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-            Customer customer=customerRepo.findByEmail(userDetails.getUsername());
-            customer.setProfilePic(picURL);
-        }
-        return "pages/conf";
-    }
+//    @PostMapping("/update")
+//    public String customerUpdate(@RequestParam("profilePic") MultipartFile file) throws IOException {
+//        String picURL= tools.loadPic(file);
+//        if(!picURL.equalsIgnoreCase(""))
+//        {
+//            Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+//            UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+//            Customer customer=customerRepo.findByEmail(userDetails.getUsername());
+//            customer.setProfilePic(picURL);
+//        }
+//        return "pages/conf";
+//    }
 
 
     @GetMapping("/settings/profile")
@@ -68,6 +64,16 @@ public class CustomerController {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         Customer customer=customerRepo.findByEmail(userDetails.getUsername());
+        if(customer.getProfilePic()==null)
+        {
+            model.addAttribute("pic","/static/Image/userIconProfile.jpg");
+        }else {
+            if(customer.getProfilePic().isEmpty()||customer.getProfilePic().equalsIgnoreCase("")){
+                model.addAttribute("pic","/static/Image/userIconProfile.jpg");
+            }else{
+                model.addAttribute("pic",customer.getProfilePic());
+            }
+        }
         model.addAttribute("name",customer.getName());
         model.addAttribute("email",customer.getEmail());
         model.addAttribute("phone",customer.getPhone());
@@ -112,6 +118,36 @@ public class CustomerController {
         model.addAttribute("email",customer.getEmail());
         model.addAttribute("phone",customer.getPhone());
         model.addAttribute("location",customer.getLocation());
+        model.addAttribute("part", 5);
+        return "pages/userSettings";
+    }
+
+    @PostMapping("/profile/update")
+    public String customerUpdate(@RequestParam("email")String email,
+                                 @RequestParam("name")String name,
+                                 @RequestParam("phone")String phone,
+                                 @RequestParam("location")String location,
+                                 Model model
+    ){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        Customer customer=customerRepo.findByEmail(userDetails.getUsername());
+        if(!name.isBlank()){
+            customer.setName(name);
+        }
+        if(!phone.isBlank()){
+            customer.setPhone(phone);
+        }
+        if(!location.isBlank()){
+            customer.setLocation(location);
+        }
+        if(!email.isBlank()&&customerRepo.findByEmail(email)==null){
+            customer.setEmail(email);
+        }
+        model.addAttribute("name", customer.getName());
+        model.addAttribute("email", customer.getEmail());
+        model.addAttribute("phone", customer.getPhone());
+        model.addAttribute("location", customer.getLocation());
         model.addAttribute("part", 5);
         return "pages/userSettings";
     }

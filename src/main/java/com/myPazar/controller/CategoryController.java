@@ -18,6 +18,9 @@ public class CategoryController {
     public String categoriesLoad(Model model){
         List<Category> categoriesList = categoriesService.getAllCategories();
         model.addAttribute("categoriesList",categoriesList);
+        System.out.println(categoriesList.get(0).getPic());
+
         return "pages/category";
     }
+
 }

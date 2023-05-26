@@ -17,12 +17,12 @@
   <div class="MainContainer">
     <div class="product" th:each="product: ${products}">
       <div class="picture">
-        <img th:src="@{${product.pic}}">
+        <img th:src="${product.pic}">
       </div>
       <div class="details">
-        <p th:text="${product.description}"><span class="bolded" th:text="${product.name}"></span></p>
+        <p ><span class="bolded" th:text="${product.name}"></span>: <span th:text="${product.description}"></span></p>
+        <p class="price"><span th:text="${product.price}"> </span> <span>TL</span></p>
       </div>
-      <p class="price" th:text="${product.price}"></p>
     </div>
   </div>
 
