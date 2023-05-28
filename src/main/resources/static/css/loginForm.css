@@ -99,7 +99,6 @@ form {
   background-color: #ffffff;
   display: flex;
   align-items: center;
-  justify-content: center;
   flex-direction: column;
   padding: 0px 50px;
   height: 100%;
@@ -170,7 +169,7 @@ input {
   transform: translateX(-100%);
 }
 
-.overlay {;
+.overlay {
 
 background-image: linear-gradient(160deg, #800000 38%, #ff6666 100%);
   background-repeat: no-repeat;
@@ -286,4 +285,41 @@ background-image: linear-gradient(160deg, #800000 38%, #ff6666 100%);
  text-align: justify;
     word-spacing: -2px;
   font-weight: 600;
+}
+
+.validateMessage{
+  width: 100%;
+  height: 50px;
+}
+
+.validateMessage p{
+  color: red;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  margin:0;
+}
+
+.loginBtn{
+  background-color:#eee;;
+  color: #8B0000;
+}
+
+.loginBtn:hover{
+  background-color:#8B0000;
+  color: #fff;
+  cursor: pointer;
+}
+
+.loginPazarLogo{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 15%;
+  text-align: center;
+}
+
+.loginPazarLogo .logoTitle{
+  color: #800000;
+  font-size:xx-large;
 }

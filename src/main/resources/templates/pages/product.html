@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.w3.org/1999/xhtml">
+<html xmlns:th="http://www.w3.org/1999/xhtml"
+      xmlns:util="urn:java:org.thymeleaf.spring5.util"
+>
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -14,16 +16,16 @@
 <div th:replace="~{fragments/header :: header}"></div>
 
 <div class="main-page">
+
   <div class="MainContainer">
-    <div class="product" th:each="product: ${products}">
-      <div class="picture">
+    <a th:href="@{'/product/' + ${product.name} + '/' + ${product.id}}" class="product" th:each="product: ${products}">      <div class="picture">
         <img th:src="${product.pic}">
       </div>
       <div class="details">
         <p ><span class="bolded" th:text="${product.name}"></span>: <span th:text="${product.description}"></span></p>
         <p class="price"><span th:text="${product.price}"> </span> <span>TL</span></p>
       </div>
-    </div>
+    </a>
   </div>
 
 </div>
@@ -31,5 +33,6 @@
 <div th:replace="~{fragments/footer :: footer}"></div>
 <script th:src="@{/static/js/product.js}"></script>
 <script th:src="@{/static/js/app.js}"></script>
+<script type="text/javascript" th:src="@{/static/js/header.js}"></script>
 </body>
 </html>

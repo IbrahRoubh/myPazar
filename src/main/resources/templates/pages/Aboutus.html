@@ -12,21 +12,19 @@
 
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
-
-  <section id="about">
+<div class="main-page">
+  <div id="about">
     <div class="aboutus">
       <img th:src="@{/static/Image/aboutus2.jpg}" alt="About Us Image">
       <div class="content">
         <h1> WHY PAZARITSA?</h1>
         <p>Online market websites provide a platform for users to buy and sell products and services online from the comfort of their own homes.</p>
-
         <div class="button-container">
           <a href="#team"><button class="readmore-button">Read More</button></a>
         </div>
-
       </div>
     </div>
-  </section>
+  </div>
 
   <div id="team" class="team">
     <div class="ourteam">
@@ -43,8 +41,50 @@
         <h3> Shurooq</h3>
         <h5> Front-End Web Developer </h5>
       </div>
+      <div class="box">
+        <img th:src="@{/static/Image/ibo.jpg}">
+        <h3> Iboo </h3>
+        <h5>  Programmer</h5>
+      </div>
+
     </div>
   </div>
+
+  <div id="mission" class="mission">
+    <div class="ourmission">
+      <h1> Our mission, vision, and values</h1>
+    </div>
+    <div class="container3">
+      <div class="card">
+        <div class="img1">
+          <a href="#">
+            <img th:src="@{/static/Image/mission.png}">
+          </a>
+          <h2> Mission </h2>
+          <p> Our mission is to provide fresh, high-quality vegetables and fruits to our customers, promoting a healthy and sustainable lifestyle. We aim to be the go-to online destination for purchasing organic and locally sourced produce, offering a convenient and reliable e-commerce platform.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img1">
+          <a href="#">
+            <img th:src="@{/static/Image/vision.png}">
+          </a>
+          <h2> Vision </h2>
+          <p> Our vision is to create a positive impact on people's lives by making it easy for them to access and enjoy fresh and nutritious vegetables and fruits. We strive to build a community that values healthy eating and supports local farmers. Through our e-commerce platform, we aim to inspire and empower individuals to make informed choices about their food, contributing to a healthier and more sustainable future.</p>
+        </div>
+      </div>
+      <div class="card">
+        <div class="img1">
+          <a href="#">
+            <img th:src="@{/static/Image/values.png}">
+          </a>
+          <h2> Values </h2>
+          <p>At Pazaritsa, we are committed to the following values: Quality-We prioritize offering fresh and high-quality produce to our customers. Sustainability,We promote sustainable farming practices and strive to minimize ourenvironmental impact. Community,We aim to build a strong community that connects consumers and local farmers.Transparency,We believe in transparent and honest communication with our customers.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <div th:replace="~{fragments/footer :: footer}"></div>
 <script type="text/javascript" th:src="@{/static/js/app.js}"></script>

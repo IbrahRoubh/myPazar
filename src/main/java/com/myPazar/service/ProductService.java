@@ -26,4 +26,8 @@ public class ProductService {
             return null;
         }
     }
+
+    public Product getProductById(Long id){
+        return productRepo.getReferenceById(id);
+    }
 }

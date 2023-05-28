@@ -29,6 +29,12 @@ public class CustomerController {
     @GetMapping("/login")
     public String customerLogin(){return "pages/Login";}
 
+    @PostMapping("/login/error")
+    public String loginError(Model model){
+        model.addAttribute("error",true);
+        return "pages/Login";
+    }
+
     @GetMapping("/signup")
     public String customerSignUp(){
         return "pages/";

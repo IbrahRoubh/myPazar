@@ -16,7 +16,6 @@ public class Species {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
-    String pic;
 
     @ManyToOne
     Category category;

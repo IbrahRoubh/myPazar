@@ -29,6 +29,9 @@
         </form>
     </div>
     <div class="form-container buyer-container">
+        <div class="loginPazarLogo">
+            <a th:href="@{/}" class="logoTitle"> <i class="fas fa-shopping-bag"></i> Pazar </a>
+        </div>
         <form th:action="@{/customer/login}" method="post">
             <h1>Login</h1>
             <div class="social-media">
@@ -38,9 +41,12 @@
             </div>
             <span>or login with your account</span>
             <input type="email" name="email" placeholder="Email">
-            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="password" style="margin-bottom: 5px;" placeholder="Password">
+            <div class="validateMessage">
+                <p th:if="${error == true}">username or password are wrong</p>
+            </div>
+            <input type="submit" value="Log in" class="loginBtn">
             <a th:href="@{/forgetPassword}" class="forget-password">Forget Password</a>
-            <input type="submit" value="Log in" class="">
         </form>
     </div>
     <div class="overlay-container">

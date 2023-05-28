@@ -20,6 +20,7 @@ public class Product {
     int count;
     String pic;
     String description;
+    String state;
 
     @ManyToOne
     Species species;

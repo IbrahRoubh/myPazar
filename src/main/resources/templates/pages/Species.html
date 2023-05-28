@@ -23,7 +23,6 @@
     <div class="MainContainer">
         <a class ="Species-container" th:each="species : ${speciesList}" th:href="@{'/{speciesName}/products'(speciesName=${species.name})}">
             <div class="Speciesimg">
-                <img th:src="@{${species.pic}}">
             </div>
             <div class="Speciestitle">
                 <h2 th:text="${species.name}"> </h2>

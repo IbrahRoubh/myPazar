@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pro desc</title>
+    <link th:href="@{https://fonts.googleapis.com/css?family=Josefin+Sans&family=Poppins:wght@100;600;700&display=swap}" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/productShow.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/stylesheet.css}">
+</head>
+
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="main-page">
+    <div class="main-wrapper">
+        <div class="container4">
+            <div class="product-div">
+                <div class="product-div-left">
+                    <div class="img-container">
+                        <img th:src="${product.pic}" alt="onion" id="onionImage">
+                    </div>
+                </div>
+                <div class="product-div-right">
+                    <span class="product-name" th:text="${product.name}"></span>
+                    <div class="product-rating">
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                    </div>
+                    <span class="product-price" th:text="${product.price+' TL'}"></span>
+                    <div class="quantity-container">
+                        <label for="unit" th:text="${product.unit}"></label>
+                        <input type="number" id="unit" name="kg" min="1" value="1">
+                    </div>
+                    <div class="btn-groups">
+                        <button type="button" class="add-cart-btn">Add to cart</button>
+                        <div class="heart">
+                            <i class="fas fa-heart" id="heartIcon" onclick="toggleLike()"></i>
+                        </div>
+                    </div>
+                    <div class="delivery-container">
+                        <i class="fas fa-truck"></i>
+                        <span><b>Quick delivery</b> in 20 minutes</span>
+                    </div>
+                    <div class="seller-profile">
+                        <button type="button" class="profile-btn">
+                            <i class="fas fa-store"></i>
+                            Check Seller's Profile
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+<script type="text/javascript" th:src="@{/static/js/app.js}"></script>
+<script type="text/javascript" th:src="@{/static/js/header.js}"></script>
+</body>
+</html>
