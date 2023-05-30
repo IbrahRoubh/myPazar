@@ -15,8 +15,9 @@ public class DatabaseLoader implements CommandLineRunner{
     private final ProductRepo productRepo;
     private final BankCardRepo bankCardRepo;
     private final PasswordEncoder encoder;
+    private final CartRepo cartRepo;
     @Autowired
-    public DatabaseLoader(CategoryRepo categoriesRepo, SpeciesRepo speciesRepo, CustomerRepo customerRepo, PasswordEncoder encoder,ProductRepo productRepo,BankCardRepo bankCardRepo)
+    public DatabaseLoader(CategoryRepo categoriesRepo, SpeciesRepo speciesRepo, CustomerRepo customerRepo, PasswordEncoder encoder,ProductRepo productRepo,BankCardRepo bankCardRepo, CartRepo cartRepo)
     {
         this.categoriesRepo= categoriesRepo;
         this.speciesRepo= speciesRepo;
@@ -24,6 +25,7 @@ public class DatabaseLoader implements CommandLineRunner{
         this.encoder = encoder;
         this.productRepo = productRepo;
         this.bankCardRepo = bankCardRepo;
+        this.cartRepo = cartRepo;
     }
     @Override
     public void run(String... args) throws Exception {
@@ -33,7 +35,6 @@ public class DatabaseLoader implements CommandLineRunner{
         category1.setPic("/images/fruit.jpg");
         category2.setPic("/images/clothes.jpg");
         category3.setPic("/images/milk.jpg");
-
         categoriesRepo.save(category1);
         categoriesRepo.save(category2);
         categoriesRepo.save(category3);
@@ -43,7 +44,6 @@ public class DatabaseLoader implements CommandLineRunner{
         Species species3 = new Species("chess", category3);
         Species species4 = new Species("banana", category1);
         Species species5 = new Species("pineapple", category1);
-
         speciesRepo.save(species1);
         speciesRepo.save(species2);
         speciesRepo.save(species3);
@@ -55,15 +55,11 @@ public class DatabaseLoader implements CommandLineRunner{
         Product product3 = new Product("yellow apple",7.85,"ay","kg",5,"","as djf ldj dlfjd ldjfd dlfjd ldjdld dldfjd ",species1);
         Product product4 = new Product("red apple",6,"ga","kg",24,"","",species1);
         Product product5 = new Product("green apple",12,"ed","kg",32,"","green apple",species1);
-
         product1.setPic("/images/turkishBanana.jpg");
         product2.setPic("/images/italianBanana.jpg");
         product3.setPic("/images/yellowApple.jpg");
         product4.setPic("/images/redApple.jpg");
         product5.setPic("/images/greenApple.jpg");
-
-
-
         productRepo.save(product1);
         productRepo.save(product2);
         productRepo.save(product3);
@@ -72,19 +68,25 @@ public class DatabaseLoader implements CommandLineRunner{
 
         Customer customer1 = new Customer("i@gmail","ibrahim", encoder.encode("123"),"04140","istanboul");
         Customer customer2 = new Customer("f@gmail","ibrahim", encoder.encode("000"),"04140","istanboul");
-
         customerRepo.save(customer1);
         customerRepo.save(customer2);
 
+        Cart cart1 = new Cart();
+        Cart cart2 = new Cart();
+        cart1.setCustomer(customer1);
+        cart2.setCustomer(customer2);
+        cartRepo.save(cart1);
+        cartRepo.save(cart2);
+
         BankCard bankCard1= new BankCard("ibrahim","1447 1471 1474 0021","020","07/29",customer1);
         BankCard bankCard2= new BankCard(customer2.getName(),"1447 1471 1474 0021","017","06/27",customer2);
-
         bankCardRepo.save(bankCard1);
         bankCardRepo.save(bankCard2);
 
         customer1.setBankCard(bankCard1);
         customer2.setBankCard(bankCard2);
-
+        customer1.setCart(cart1);
+        customer2.setCart(cart2);
         customerRepo.save(customer1);
         customerRepo.save(customer2);
     }

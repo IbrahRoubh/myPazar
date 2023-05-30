@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Cart</title>
+  <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}">
+  <link rel="stylesheet" th:href="@{path/to/font-awesome/css/font-awesome.min.css}">
+  <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+  <link rel="stylesheet" type="text/css" th:href="@{/static/css/cartShow.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/static/css/headerFooter.css}">
+</head>
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div class="main-page" style="margin-top: 75px;">
+ <div class="cartShowContainer">
+   <div class="shopping-cart">
+     <div class="tableContainer">
+       <table class="cartShowTable">
+         <thead>
+         <tr>
+           <th ><h2>Image</h2></th>
+           <th ><h2>Product</h2></th>
+           <th ><h2>Price</h2></th>
+           <th ><h2>quantity</h2></th>
+           <th ><h2>Remove</h2></th>
+           <th ><h2>Total</h2></th>
+         </tr>
+         </thead>
+         <tbody th:each="cartProduct : ${cartProducts}">
+         <tr>
+           <td class="product-image">
+             <img th:src="${cartProduct.product.pic}">
+           </td>
+           <td>
+             <h3 class="product-title" th:text="${cartProduct.product.name}"></h3>
+           </td>
+           <td>
+             <h3 class="product-price" th:text="${cartProduct.product.price +'TL'}"></h3>
+           </td>
+           <td>
+             <input class="quantityProductInput" type="number" th:value="${cartProduct.quantity}" min="1" th:max="${cartProduct.product.count}">
+           </td>
+           <td>
+             <form method="post" th:action="@{/cart/productDelete}" class="remove-product">
+               <input type="hidden" name="cartProductId" th:value="${cartProduct.id}">
+               <button type="submit"  class="fas fa-trash"></button> <!-- Trash icon -->
+             </form>
+           </td>
+           <td>
+             <h3 class="product-line-price" style="color:red;" ></h3>
+           </td>
+         </tr>
+         </tbody>
+       </table>
+     </div>
+
+     <div class="totals">
+       <div class="totals-item">
+         <label>Total</label>
+         <div class="totals-value" id="cart-subtotal">0 TL</div>
+       </div>
+       <div class="totals-item">
+         <label>Tax (5%)</label>
+         <div class="totals-value" id="cart-tax">0 TL</div>
+       </div>
+       <div class="totals-item">
+         <label>Delivery</label>
+         <div class="totals-value" id="cart-shipping">0 TL</div>
+       </div>
+       <div class="totals-item totals-item-total">
+         <label>Total to be paid</label>
+         <div class="totals-value" id="cart-total">0 TL</div>
+       </div>
+     </div>
+
+     <a th:href="@{/receipt/conformOrder}" class="checkout">Checkout</a>
+   </div>
+ </div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+<script type="text/javascript" th:src="@{/static/js/header.js}"></script>
+<script th:src="@{https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js}">
+
+</script>
+<script>
+var fadeTime = 300;
+
+/* Assign actions */
+$('.quantityProductInput').change(function () {
+  updateQuantity(this);
+});
+
+function recalculateCart() {
+  var subtotal = 0;
+
+  $('.cartShowTable tbody tr').each(function () {
+    var price = parseFloat($(this).find('.product-price').text());
+    var quantity = $(this).find('.quantityProductInput').val();
+    var linePrice = price * quantity;
+    subtotal += linePrice;
+    $(this).find('.product-line-price').text(linePrice.toFixed(2) + ' TL');
+  });
+
+  var taxRate = 0.05;
+  var shippingRate = 15.00;
+  var tax = subtotal * taxRate;
+  var shipping = (subtotal > 0 ? shippingRate : 0);
+  var total = subtotal + tax + shipping;
+
+  $('#cart-subtotal').text(subtotal.toFixed(2) + ' TL');
+  $('#cart-tax').text(tax.toFixed(2) + ' TL');
+  $('#cart-shipping').text(shipping.toFixed(2) + ' TL');
+  $('#cart-total').text(total.toFixed(2) + ' TL');
+
+  if (total == 0) {
+    $('.checkout').fadeOut(fadeTime);
+  } else {
+    $('.checkout').fadeIn(fadeTime);
+  }
+}
+
+function updateQuantity(quantityInput) {
+  var productRow = $(quantityInput).closest('tr');
+  var price = parseFloat(productRow.find('.product-price').text());
+  var quantity = $(quantityInput).val();
+  var linePrice = price * quantity;
+  productRow.find('.product-line-price').text(linePrice.toFixed(2) + ' TL');
+  recalculateCart();
+}
+
+function removeItem(removeButton) {
+  var productRow = $(removeButton).closest('tr');
+  productRow.slideUp(fadeTime, function () {
+    productRow.remove();
+    recalculateCart();
+  });
+}
+
+function confirmRemoveItem(removeButton) {
+  var productRow = $(removeButton).closest('tr');
+  var productName = productRow.find('.product-title').text();
+  if (confirm("Are you sure you want to remove '" + productName + "' from the cart?")) {
+    removeItem(removeButton);
+  }
+}
+
+$(document).ready(function () {
+  recalculateCart();
+});
+  </script>
+</body>
+</html>

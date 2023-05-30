@@ -7,7 +7,7 @@
     <link th:href="@{https://fonts.googleapis.com/css?family=Josefin+Sans&family=Poppins:wght@100;600;700&display=swap}" rel="stylesheet">
     <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" th:href="@{/static/css/productShow.css}">
-    <link rel="stylesheet" type="text/css" th:href="@{/static/css/stylesheet.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/headerFooter.css}">
 </head>
 
 <body>
@@ -22,44 +22,83 @@
                         <img th:src="${product.pic}" alt="onion" id="onionImage">
                     </div>
                 </div>
-                <div class="product-div-right">
-                    <span class="product-name" th:text="${product.name}"></span>
-                    <div class="product-rating">
-                        <span><i class="fas fa-star"></i></span>
-                        <span><i class="fas fa-star"></i></span>
-                        <span><i class="fas fa-star"></i></span>
-                        <span><i class="fas fa-star"></i></span>
-                        <span><i class="fas fa-star"></i></span>
-                    </div>
-                    <span class="product-price" th:text="${product.price+' TL'}"></span>
-                    <div class="quantity-container">
-                        <label for="unit" th:text="${product.unit}"></label>
-                        <input type="number" id="unit" name="kg" min="1" value="1">
-                    </div>
-                    <div class="btn-groups">
-                        <button type="button" class="add-cart-btn">Add to cart</button>
-                        <div class="heart">
-                            <i class="fas fa-heart" id="heartIcon" onclick="toggleLike()"></i>
+                <form method="post" th:action="@{/cart/addToCart}">
+                    <input type="hidden" name="productId" th:value="${product.id}">
+                    <div class="product-div-right">
+                        <p class="product-name" th:text="${product.name}"></p>
+                        <div class="product-rating">
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                            <span><i class="fas fa-star"></i></span>
+                        </div>
+                        <p class="product-price" th:text="${product.price+' TL'}"></p>
+                        <div class="quantity-container">
+                            <label for="unit" th:text="${product.unit}"></label>
+                            <input type="number" id="unit" name="quantity" min="1" th:max="${product.count}" value="1">
+                        </div>
+                        <div class="btn-groups">
+                            <input  type="submit" class="add-cart-btn" value="Add to cart">
+                            <div class="heart">
+                                <i class="fas fa-heart" id="heartIcon" onclick="toggleLike()"></i>
+                            </div>
+                        </div>
+                        <div class="delivery-container">
+                            <i class="fas fa-truck"></i>
+                            <span><b>Quick delivery</b> in 20 minutes</span>
+                        </div>
+                        <div class="seller-profile">
+                            <button type="button" class="profile-btn">
+                                <i class="fas fa-store"></i>
+                                Check Seller's Profile
+                            </button>
                         </div>
                     </div>
-                    <div class="delivery-container">
-                        <i class="fas fa-truck"></i>
-                        <span><b>Quick delivery</b> in 20 minutes</span>
-                    </div>
-                    <div class="seller-profile">
-                        <button type="button" class="profile-btn">
-                            <i class="fas fa-store"></i>
-                            Check Seller's Profile
-                        </button>
-                    </div>
-                </div>
+                </form>
             </div>
         </div>
     </div>
 </div>
 
+<!-- The modal -->
+<div id="myModal" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span> <!-- Close button -->
+        <h1 class="h1Message">Product Added to Cart</h1>
+        <p class="pMessage">Thank you for selecting the product. It has been added to your cart.</p>
+        <a th:href="@{/cart/showCart}" class="button">View Cart</a>
+    </div>
+</div>
+
+
 <div th:replace="~{fragments/footer :: footer}"></div>
 <script type="text/javascript" th:src="@{/static/js/app.js}"></script>
 <script type="text/javascript" th:src="@{/static/js/header.js}"></script>
+<script>
+// Get the modal element
+var modal = document.getElementById("myModal");
+
+// Get the close button element
+var closeBtn = document.querySelector(".close");
+
+var isAdd = [[${isAdd}]];
+if (isAdd) {
+  modal.style.display = "block";
+}
+
+
+// When the user clicks the close button, close the modal
+closeBtn.onclick = function() {
+  modal.style.display = "none";
+};
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+};
+</script>
 </body>
 </html>

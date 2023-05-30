@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -24,6 +26,8 @@ public class Product {
 
     @ManyToOne
     Species species;
+    @OneToMany(mappedBy = "product")
+    List<CartProduct> cartProducts;
 
     public Product(String name, double price, String code, String unit, int count, String pic, String description, Species species) {
         this.name = name;

@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -23,6 +25,10 @@ public class Customer {
 
     @OneToOne
     BankCard bankCard;
+    @OneToOne
+    Cart cart;
+    @OneToMany
+    List<Receipt> receipts;
     public Customer(String email, String name, String password, String phone, String location) {
         this.email = email;
         this.name = name;

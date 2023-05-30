@@ -6,14 +6,9 @@ import com.myPazar.model.Customer;
 import com.myPazar.repository.CustomerRepo;
 import com.myPazar.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.multipart.MultipartFile;
-import java.io.IOException;
 
 @Controller
 @RequestMapping("/customer")
@@ -67,9 +62,7 @@ public class CustomerController {
 
     @GetMapping("/settings/profile")
     public String profileShow(Model model){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        Customer customer=customerRepo.findByEmail(userDetails.getUsername());
+        Customer customer = tools.getAuthenticationCustomer();
         if(customer.getProfilePic()==null)
         {
             model.addAttribute("pic","/static/Image/userIconProfile.jpg");
@@ -90,9 +83,7 @@ public class CustomerController {
 
     @GetMapping("/settings/payment")
     public String paymentShow(Model model){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        Customer customer=customerRepo.findByEmail(userDetails.getUsername());
+        Customer customer=tools.getAuthenticationCustomer();
         BankCard card = customer.getBankCard();
         model.addAttribute("userName",card.getUserName());
         model.addAttribute("cardNum",card.getCardNumber());
@@ -117,9 +108,7 @@ public class CustomerController {
 
     @GetMapping("/settings/setting")
     public String settingShow(Model model){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        Customer customer=customerRepo.findByEmail(userDetails.getUsername());
+        Customer customer=tools.getAuthenticationCustomer();
         model.addAttribute("name",customer.getName());
         model.addAttribute("email",customer.getEmail());
         model.addAttribute("phone",customer.getPhone());
@@ -135,9 +124,7 @@ public class CustomerController {
                                  @RequestParam("location")String location,
                                  Model model
     ){
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        Customer customer=customerRepo.findByEmail(userDetails.getUsername());
+        Customer customer=tools.getAuthenticationCustomer();
         if(!name.isBlank()){
             customer.setName(name);
         }

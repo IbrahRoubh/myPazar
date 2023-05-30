@@ -33,13 +33,13 @@ img{
 }
 
 .product-div{
-    margin: 1rem 0;
-    padding: 100px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    background-color: #fff;
-    border-radius: 3px;
-    column-gap: 10px;
+   margin: 1rem 0;
+   padding: 100px;
+   display: grid;
+   grid-template-columns: repeat(2, 1fr);
+   background-color: #fff;
+   border-radius: 3px;
+   column-gap: 10px;
    box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.7);
    height: 75vh;
 }
@@ -165,7 +165,7 @@ img{
   margin-top: -20px;
 }
 
-.btn-groups button {
+.btn-groups button, .btn-groups input[type="submit"]{
   display: inline-block;
   font-size: 16px;
   font-family: inherit;
@@ -188,8 +188,11 @@ img{
   color: #8B0000;
 }
 
+.add-cart-btn:hover[value] {
+  color: #8B0000;
+}
+
 .btn-groups {
-  position: relative;
   display: inline-flex;
   align-items: center;
 }
@@ -265,6 +268,63 @@ letter-spacing: 0.6px;
 
 .heart .fa-heart.liked {
   color: red;
+}
+
+.modal {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+      background-color: #fff;
+      margin: 10% auto;
+      padding: 20px;
+      border-radius: 4px;
+      width: 400px;
+      text-align: center;
+}
+.close {
+      color: #aaa;
+      float: right;
+      font-size: 28px;
+      font-weight: bold;
+      cursor: pointer;
+}
+
+.close:hover {
+      color: #555;
+}
+
+.h1Message{
+    color: #333;
+    font-size: 24px;
+}
+
+.pMessage{
+      color: #777;
+      font-size: 18px;
+}
+
+.button {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s;
+      margin-top: 3%;
+}
+
+.button:hover {
+   background-color: #555;
 }
 
 @media screen and (max-width: 992px){

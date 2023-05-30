@@ -4,70 +4,18 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pazar</title>
-  <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link th:href="@{https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap}" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" th:href="@{/static/css/stylesheet.css}">
-  <link rel="stylesheet" type="text/css" th:href="@{/static/css/sellerpage.css}">
+  <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}">
+
+  <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+
+  <link rel="stylesheet" type="text/css" th:href="@{/static/css/headerFooter.css}">
 </head>
 
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
-
 <div class="main-page">
-  <div class="home" id="home">
-    <img src="Image/seller1.jpg" alt="Banner Image">
-    <div class="content">
-      <h3>Pazarista</h3>
-      <p>Boost your sales and expand your reach with our thriving online bazaar. Join our platform today and start connecting with eager buyers</p>
-    </div>
-  </div>
 
-  <div class="join" id="join">
-    <div class="content">
-      <h1>Want to be in our team?</h1>
-      <p class="custom-paragraph">Are you tired of going to the Pazar every week? Look no further – Pazarista is here to revolutionize the way you shop from Pazar! We are proud to offer a delivery experience that's unparalleled in terms of convenience, reliability, and customer satisfaction.
-        Why Choose Pazarista?
-        Lightning-Fast Deliveries: Time is precious, and we value it just as much as you do. With our lightning-fast delivery service, your packages will reach you in no time. Say goodbye to lengthy waits and hello to quick and efficient doorstep deliveries.
-        Easy-to-Use Platform: We understand the importance of a seamless user experience. That's why we've designed our delivery website with simplicity in mind. Placing an order is as easy as a few clicks, and tracking your package is a breeze. Our user-friendly platform ensures a stress-free and intuitive journey from start to finish.
-        Extensive Coverage: No matter where you are, we've got you covered! Our extensive delivery network spans across Istanbul, we reach every corner to ensure your packages find their way to you, no matter the destination.
-        Utmost Care for Your Packages: We treat your packages as if they were our own. Our dedicated delivery partners handle each item with the utmost care, ensuring that it arrives in pristine condition. We understand the value and sentimental attachment you may have to your parcels, and we take every precaution to deliver them safely.
-        Reliable and Transparent Service: At Pazarista reliability is our middle name. We take pride in providing a service you can trust.
-        Exceptional Customer Support: Your satisfaction is our top priority. Our friendly and knowledgeable customer support team is always ready to assist you with any questions or concerns you may have. We believe in going the extra mile to ensure your delivery experience exceeds your expectations.
-        Discover the joy of stress-free deliveries with Pazarista.
-        Join the thousands of satisfied customers who have already experienced the convenience and reliability of our service, say goodbye to delivery headaches and embrace a new era of seamless and efficient deliveries.
-        Try Pazarista today and experience the difference firsthand, your packages deserve the best, and we're here to deliver just that – convenience, reliability, and a smile to your doorstep!</p>
-
-      <p class="custom-paragraph">At Pazarista, we are not only dedicated to providing exceptional delivery services but also fostering a talented and passionate team. As we continue to grow, we are actively seeking motivated individuals to join our dynamic workforce.
-
-        Why Work with Us?
-
-        1. A Thriving Work Environment:
-        Join a team that values collaboration, innovation, and continuous improvement. At Pazarista, we foster a supportive work environment where your ideas are valued, and your contributions make a real impact. Be part of a company that believes in investing in its employees' growth and development.
-
-        2. Exciting Opportunities:
-        As a rapidly expanding delivery service, we offer exciting career opportunities for individuals seeking professional growth and advancement. Whether you're interested in logistics, technology, customer service, or operations, we have a range of positions to suit your skills and aspirations.
-
-        3. Teamwork and Camaraderie:
-        Become part of a close-knit team that values teamwork, respect, and open communication. We believe that collaboration and shared goals drive success. Working together, we achieve great things and create a positive and inclusive work environment.
-
-        4. Make a Difference:
-        At Pazarista, we take pride in our mission to revolutionize the delivery experience, Join us in shaping the future of logistics by providing exceptional service and exceeding customer expectations. Your contributions will directly impact on the lives of countless individuals who rely on our services.</p>
-
-
-      <h1>Join Our Team Today!</h1>
-
-      <p class="custom-paragraph">If you are passionate about making a difference, possess a strong work ethic, and thrive in a fast-paced environment, we want to hear from you.Join us on this exciting journey as we shape the future of deliveries together.Come aboard the Pazarista team and embark on a rewarding career filled with growth, challenges, and opportunities. We look forward to welcoming talented individuals like you to our family!</p>
-
-
-      <h1><a href="">Apply now and be a part of our success story</a></h1>
-
-    </div>
-  </div>
 </div>
-
 <div th:replace="~{fragments/footer :: footer}"></div>
 <script th:src="@{/static/js/app.js}"></script>
 </body>

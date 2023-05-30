@@ -5,7 +5,7 @@
 
         <a th:href="@{/home}">Home</a>
         <a th:href="@{/aboutUs}">About Us</a>
-        <a th:href="@{/categories}">categories</a>
+        <a th:href="@{/categories}">Categories</a>
         <a th:href="@{/sellerInfo}">Sellers</a>
         <a th:href="@{/FAQ}">FAQ</a>
         <a th:href="@{/contactUs}">Contact Us</a> |
@@ -15,7 +15,9 @@
     <div class="icons">
         <div class="fa fa-bars" id="Menu-button"></div>
         <div class="fa fa-search" id="search-button"></div>
-        <div class="fa fa-shopping-cart" id="cart-button" th:if="${#authorization.expression('isAuthenticated()')}"></div>
+        <a th:href="@{/cart/showCart}" th:if="${#authorization.expression('isAuthenticated()')}">
+            <div class="fa fa-shopping-cart" id="cart-button"></div>
+        </a>
         <div class="dropdown" th:if="${#authorization.expression('isAuthenticated()')}">
             <div class="fa fa-user" id="user-icon"></div>
             <ul class="droplist">
@@ -30,29 +32,8 @@
             <div class="fa fa-user" id="login-button"></div>
         </a>
     </div>
-
     <form class="search-form">
         <input type="search" id="search-box" placeholder="search">
         <label for="search-box"class="fa fa-search"> </label>
     </form>
-
-    <div class="cart">
-
-        <!--ADD ITEMS TO THE CART -->
-        <div class="box">
-            <i class="fa fa-trash"> </i>
-            <img th:src="@{/static/Image/downlo11ad.jpg}">
-            <div class="content">
-                <h3> Banana </h3>
-                <span class="price">$4.5/-</span>
-                <span class="Quantity">item No: 1</span>
-            </div>
-        </div>
-
-        <!-- end of cart -->
-
-        <div class="total"> Total : $18.97 </div>
-        <a href="#" class="button"> Proceed </a>
-
-    </div>
 </header>

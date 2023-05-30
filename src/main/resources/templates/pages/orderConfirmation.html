@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Previous order</title>
+    <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}">
+    <link rel="stylesheet" th:href="@{path/to/font-awesome/css/font-awesome.min.css}">
+    <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/orderConfirmation.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/headerFooter.css}">
+</head>
+
+<body>
+<div th:replace="~{fragments/header :: header}"></div>
+
+<div style="margin-top: 80px;">
+    <div class="orderConformContainer">
+        <div class="personal-info">
+            <h1>Personal Information:</h1>
+            <h2>Name: <span th:text="${customer.name}"></span></h2>
+            <h2>Email: <span th:text="${customer.email}"></span></h2>
+            <h2>Phone: <span th:text="${customer.phone}"></span></h2>
+            <h2>Address: <span th:text="${customer.location}"></span></h2>
+        </div>
+
+        <div class="order-summary">
+            <h1>Order Summary:</h1>
+            <div th:each="cartProduct : ${cartProducts}">
+                <h2 th:text="${cartProduct.product.name + ' ' + (cartProduct.product.price * cartProduct.quantity)+ ' TL'}"></h2>
+            </div>
+            <h2>Total: <span></span> TL</h2>
+        </div>
+
+        <div class="button-container" th:if="${not #lists.isEmpty(cartProducts)}">
+            <button class="confirm-button" type="button">Confirm Order</button>
+            <button class="cancel-button" type="button">Cancel</button>
+        </div>
+    </div>
+</div>
+
+<div th:replace="~{fragments/footer :: footer}"></div>
+<script type="text/javascript" th:src="@{/static/js/app.js}"></script>
+</body>
+</html>
