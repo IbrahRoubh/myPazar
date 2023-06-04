@@ -1,12 +1,16 @@
 package com.myPazar.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
+@AllArgsConstructor
+@NoArgsConstructor
 @Entity
 public class Seller {
     @Id
@@ -18,7 +22,24 @@ public class Seller {
     String phone;
     String location;
     String profilePic;
+    String role;
+    String workPermit;
 
-    //TODO-1 : add pic and work permit
-    //TODO-2 : add the relationship
+    @OneToMany(mappedBy = "seller")
+    List<Product> products;
+
+    public Seller(String email, String name, String password, String phone, String location) {
+        this.email = email;
+        this.name = name;
+        this.password = password;
+        this.phone = phone;
+        this.location = location;
+        this.role = Role.SELLER.toString();
+    }
+
+    public void addProduct(Product product){
+        if(this.products==null)
+            this.products = new ArrayList<>();
+        this.products.add(product);
+    }
 }

@@ -1,8 +1,7 @@
 package com.myPazar.config;
 
-import com.myPazar.repository.CustomerRepo;
-import com.myPazar.repository.SellerRepo;
-import com.myPazar.service.detailsService.CustomerDetailsService;
+import com.myPazar.model.Role;
+import com.myPazar.service.detailsService.UserEntityDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -18,40 +17,32 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 @EnableWebSecurity
 @EnableWebMvc
 public class SecurityConfig {
-    private final CustomerRepo customerRepo;
-    private final SellerRepo sellerRepo;
-
     @Autowired
-    public SecurityConfig(CustomerRepo customerRepo, SellerRepo sellerRepo) {
-        this.customerRepo = customerRepo;
-        this.sellerRepo = sellerRepo;
-    }
+    private LoginSuccessHandler loginSuccessHandler;
 
-    //TODO-1: add for the SecurityFilterChain the authenticated() part
-    //        and the roles
+    //TODO make the authenticated base on the role
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-        http.authorizeHttpRequests( auth->
-                        auth.requestMatchers("/customer/settings/**","/cart/**","/receipt/**",
-                                        "/seller/**").authenticated()
+        http.authorizeHttpRequests( auth-> auth.requestMatchers("/seller/signup").permitAll()
+                                .requestMatchers("/customer/settings/**","/cart/**","/receipt/**","/seller/**")
+                                .authenticated()
                                 .anyRequest().permitAll()
                 )
                 .formLogin(form -> form.loginPage("/customer/login")
-                                .usernameParameter("email")
-                                .passwordParameter("password")
-                                .defaultSuccessUrl("/")
+                        .usernameParameter("email")
+                        .passwordParameter("password")
+                        .successHandler(loginSuccessHandler)
                         .failureForwardUrl("/customer/login/error")
-                ).logout( logout->
-                logout.logoutUrl("/logout")
+                )
+                .logout( logout-> logout.logoutUrl("/logout")
                         .logoutSuccessUrl("/")
                 );
         return http.build();
     }
 
-    //TODO-2: add the database config so the login is connected to database
     @Bean
-    public UserDetailsService userDetailsService(){
-        return new CustomerDetailsService();
+    public UserDetailsService userDetailsService() {
+        return new UserEntityDetailsService();
     }
 
     @Bean

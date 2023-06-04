@@ -1,6 +1,7 @@
 package com.myPazar.service;
 
 
+import com.myPazar.Tools;
 import com.myPazar.model.Cart;
 import com.myPazar.model.Customer;
 import com.myPazar.repository.CartRepo;
@@ -9,32 +10,37 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.tools.Tool;
+
 @Service
 public class CustomerService {
-    @Autowired
-    private CustomerRepo customerRepo;
-    @Autowired
-    private  PasswordEncoder encoder;
-    private CartRepo cartRepo;
+    private final CustomerRepo customerRepo;
+    private final   PasswordEncoder encoder;
+    private final CartRepo cartRepo;
+    private final Tools tools;
 
-    public boolean isValidEmail(String email){
-        if(customerRepo.findByEmail(email) ==null){
-            return true;
-        }else{
-            return false;
-        }
+    public CustomerService(CustomerRepo customerRepo, PasswordEncoder encoder, CartRepo cartRepo, Tools tools) {
+        this.customerRepo = customerRepo;
+        this.encoder = encoder;
+        this.cartRepo = cartRepo;
+        this.tools = tools;
     }
 
-    public boolean addCustomer(Customer customer){
+    public int addCustomer(Customer customer){
+        if(!tools.isValidEmail(customer.getEmail()))
+            return 0;
+
         customer.setPassword(encoder.encode(customer.getPassword()));
+        customerRepo.save(customer);
         Cart cart = new Cart();
         cart.setCustomer(customer);
         cartRepo.save(cart);
         customer.setCart(cart);
-        if(customerRepo.save(customer) !=null){
-            return true;
+        Customer customer1 = customerRepo.save(customer);
+        if(customer1 !=null){
+            return 1;
         }else{
-            return false;
+            return 2;
         }
     }
 }

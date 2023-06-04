@@ -1,0 +1,98 @@
+.container22 {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.order-box {
+  border: 2px solid #ccc;
+  padding: 20px;
+}
+
+.order-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.order-item {
+  border-bottom: 1px solid #ccc;
+}
+
+.order-item:last-child {
+  border-bottom: none;
+}
+
+.order-image {
+  width: 100px;
+  height: 100px;
+  margin-right: 10px;
+}
+
+.order-details {
+  flex-grow: 1;
+}
+
+.order-name {
+  margin: 0;
+}
+
+.order-price {
+  margin: 0;
+  color: #888;
+}
+
+.order-details-button,
+.print-receipt-button {
+  background-color: #8b0000;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.order-details-button:hover,
+.print-receipt-button:hover {
+  background-color: black;
+}
+
+.delivery-status {
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  margin-top: 5px;
+  margin-right: 50px;
+  margin-left: 10px;
+}
+
+.tick-icon {
+  width: 24px;
+  height: 24px;
+  background-color: #4CAF50;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 8px;
+}
+
+.tick-icon i {
+  color: white;
+}
+
+.message {
+  font-weight: bold;
+}
+
+.tick-icon.delivered {
+  background-color: #4CAF50;
+}
+
+.tick-icon.not-delivered {
+  background-color: #FF0000;
+}
+
+.print-receipt-link {
+  margin-left: 10px;
+  text-decoration: none;
+}

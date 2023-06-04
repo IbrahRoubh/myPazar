@@ -21,11 +21,12 @@ public class Receipt {
     PaymentState paymentStatus;
     ReceiptState state;
     String trackCode;
+    Date dateOFDelivery;
 
     @ManyToOne
     Customer customer;
-    @OneToMany(mappedBy = "receipt")
-    List<CartProduct> cartProductList;
+    @OneToMany(mappedBy = "receipt", fetch = FetchType.EAGER)
+    List<ReceiptProduct> receiptProducts;
 
     public Receipt(Date date, double totalPrice, PaymentState paymentStatus, ReceiptState state, String trackCode) {
         this.date = date;

@@ -1,6 +1,6 @@
 package com.myPazar.model;
 
-public enum Roles {
+public enum Role {
     CUSTOMER
     ,SELLER
 }

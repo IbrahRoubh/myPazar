@@ -10,24 +10,6 @@
 </head>
 <body>
 <div class="container4" id="container4">
-    <div class="form-container seller-container">
-        <form th:action="@{/customer/signup}" method="post">
-            <h1> Sign up </h1>
-            <span>or signup with your account</span>
-            <div class="social-media">
-                <a href="#" class="social"><i class="fab fa-facebook"></i></a>
-                <a href="#" class="social"><i class="fab fa-google"></i></a>
-                <a href="#" class="social"><i class="fab fa-twitter"></i></a>
-            </div>
-            <input type="text" name="name" placeholder="Name">
-            <input type="email" name="email" placeholder="Email">
-            <input type="phone" name="phone" placeholder="Phone no">
-            <input type="text" name="location" placeholder="Location">
-            <input type="password" name="password" placeholder="Password">
-            <input type="password" name="coPassword" placeholder="Confirm Password">
-            <button type="submit"> Signup </button>
-        </form>
-    </div>
     <div class="form-container buyer-container">
         <div class="loginPazarLogo">
             <a th:href="@{/}" class="logoTitle"> <i class="fas fa-shopping-bag"></i> Pazar </a>
@@ -51,18 +33,12 @@
     </div>
     <div class="overlay-container">
         <div class="overlay">
-            <div class="overlay-panel overlay-left">
-                <h1 class="signup-heading">Login</h1>
-                <button class="btn1" id="logInBuyer">Login</button>
-            </div>
             <div class="overlay-panel overlay-right">
                 <h1 class="signup-heading">Sign up</h1>
-                <button class="btn1" id="logInSeller">Sign up</button>
+                <a th:href="@{/customer/signup}"><button class="btn1"  id="logInSeller">Sign up</button></a>
             </div>
         </div>
     </div>
 </div>
-
-<script th:src="@{/static/js/sellerbyerlogin.js}"></script>
 </body>
 </html>

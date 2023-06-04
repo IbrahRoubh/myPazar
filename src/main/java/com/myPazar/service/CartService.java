@@ -54,7 +54,8 @@ public class CartService {
 
     public List<CartProduct> getCartProducts(){
         Cart cart = getCustomerAuthCart();
-        return cart.getCartProducts();
+        List<CartProduct> cartProducts = cart.getCartProducts();
+        return cartProducts;
     }
 
     public void deleteCartProduct(Long id){

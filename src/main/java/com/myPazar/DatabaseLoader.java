@@ -16,8 +16,9 @@ public class DatabaseLoader implements CommandLineRunner{
     private final BankCardRepo bankCardRepo;
     private final PasswordEncoder encoder;
     private final CartRepo cartRepo;
+    private final SellerRepo sellerRepo;
     @Autowired
-    public DatabaseLoader(CategoryRepo categoriesRepo, SpeciesRepo speciesRepo, CustomerRepo customerRepo, PasswordEncoder encoder,ProductRepo productRepo,BankCardRepo bankCardRepo, CartRepo cartRepo)
+    public DatabaseLoader(CategoryRepo categoriesRepo, SpeciesRepo speciesRepo, CustomerRepo customerRepo, PasswordEncoder encoder,ProductRepo productRepo,BankCardRepo bankCardRepo, CartRepo cartRepo, SellerRepo sellerRepo)
     {
         this.categoriesRepo= categoriesRepo;
         this.speciesRepo= speciesRepo;
@@ -26,6 +27,7 @@ public class DatabaseLoader implements CommandLineRunner{
         this.productRepo = productRepo;
         this.bankCardRepo = bankCardRepo;
         this.cartRepo = cartRepo;
+        this.sellerRepo = sellerRepo;
     }
     @Override
     public void run(String... args) throws Exception {
@@ -50,26 +52,37 @@ public class DatabaseLoader implements CommandLineRunner{
         speciesRepo.save(species4);
         speciesRepo.save(species5);
 
-        Product product1 = new Product("turkish banana",15,"osa11","kg",20,"","first class onion",species4);
-        Product product2 = new Product("italian banana",25.49,"ib21","kg",12,"","fresh banana from italy",species4 );
-        Product product3 = new Product("yellow apple",7.85,"ay","kg",5,"","as djf ldj dlfjd ldjfd dlfjd ldjdld dldfjd ",species1);
-        Product product4 = new Product("red apple",6,"ga","kg",24,"","",species1);
-        Product product5 = new Product("green apple",12,"ed","kg",32,"","green apple",species1);
+        Seller seller = new Seller("a101@gmail.com","A101",encoder.encode("000"),"0501427741620","istanboul");
+        sellerRepo.save(seller);
+
+        Product product1 = new Product("turkish banana",15,"osa11",ProductUnit.Kg.toString(),20,"","first class onion",species4);
+        Product product2 = new Product("italian banana",25.49,"ib21",ProductUnit.Kg.toString(),12,"","fresh banana from italy",species4 );
+        Product product3 = new Product("yellow apple",7.85,"ay",ProductUnit.Kg.toString(),5,"","as djf ldj dlfjd ldjfd dlfjd ldjdld dldfjd ",species1);
+        Product product4 = new Product("red apple",6,"ga",ProductUnit.Kg.toString(),24,"","",species1);
+        Product product5 = new Product("green apple",12,"ed",ProductUnit.Kg.toString(),32,"","green apple",species1);
         product1.setPic("/images/turkishBanana.jpg");
         product2.setPic("/images/italianBanana.jpg");
         product3.setPic("/images/yellowApple.jpg");
         product4.setPic("/images/redApple.jpg");
         product5.setPic("/images/greenApple.jpg");
+        product1.setSeller(seller);
+        product2.setSeller(seller);
+        product3.setSeller(seller);
+        product4.setSeller(seller);
+        product5.setSeller(seller);
         productRepo.save(product1);
         productRepo.save(product2);
         productRepo.save(product3);
         productRepo.save(product4);
         productRepo.save(product5);
 
+
         Customer customer1 = new Customer("i@gmail","ibrahim", encoder.encode("123"),"04140","istanboul");
         Customer customer2 = new Customer("f@gmail","ibrahim", encoder.encode("000"),"04140","istanboul");
+        customer1.addRole(Role.CUSTOMER);
         customerRepo.save(customer1);
         customerRepo.save(customer2);
+
 
         Cart cart1 = new Cart();
         Cart cart2 = new Cart();
@@ -89,5 +102,6 @@ public class DatabaseLoader implements CommandLineRunner{
         customer2.setCart(cart2);
         customerRepo.save(customer1);
         customerRepo.save(customer2);
+
     }
 }

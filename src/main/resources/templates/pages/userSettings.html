@@ -8,6 +8,7 @@
   <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
   <link rel="stylesheet" type="text/css" th:href="@{/static/css/userSetting.css}">
   <link rel="stylesheet" type="text/css" th:href="@{/static/css/headerFooter.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/static/css/ordersShow.css}">
 </head>
 
 <body>
@@ -109,6 +110,37 @@
       </div>
 
       <div  th:class="${part == 3} ? 'show Order tabShow' : 'hidden'">
+        <div class="container22">
+          <h1>Order List</h1>
+          <div class="order-box">
+            <table class="order-table">
+              <tr class="order-item" th:each="receipt: ${receipts}">
+                <td>
+                  <div class="order-details">
+                    <h2 class="order-name" th:text="${receipt.trackCode}"></h2>
+                    <p class="order-price" th:text="${receipt.totalPrice}"></p>
+                    <div class="delivery-status">
+                      <div class="tick-icon delivered">
+                        <i class="fas fa-check"></i>
+                      </div>
+                      <p class="message" th:text="${receipt.state}"></p>
+                    </div>
+                  </div>
+                </td>
+                <td>
+                  <a href="cart.html" class="order-details-link">
+                    <button class="order-details-button">Order Details</button>
+                  </a>
+                </td>
+                <td>
+                  <a href="receipt.html" class="print-receipt-link">
+                    <button class="print-receipt-button">Print Receipt</button>
+                  </a>
+                </td>
+              </tr>
+            </table>
+          </div>
+        </div>
         <h1> Order info </h1>
         <h2>Orderno</h2>
         <input type="text" class="input" value="">
@@ -189,6 +221,7 @@
 </div>
 
 <script th:src="@{/static/js/userSetting.js}"></script>
+<script type="text/javascript" th:src="@{/static/js/header.js}"></script>
 <script type="text/javascript" th:src="@{/static/js/app.js}"></script>
 </body>
 </html>

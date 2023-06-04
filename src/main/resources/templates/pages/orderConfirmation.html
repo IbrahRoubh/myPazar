@@ -29,11 +29,13 @@
             <div th:each="cartProduct : ${cartProducts}">
                 <h2 th:text="${cartProduct.product.name + ' ' + (cartProduct.product.price * cartProduct.quantity)+ ' TL'}"></h2>
             </div>
-            <h2>Total: <span></span> TL</h2>
+            <h2>Total: <span th:text="${totalPayment}"></span> TL</h2>
         </div>
 
         <div class="button-container" th:if="${not #lists.isEmpty(cartProducts)}">
-            <button class="confirm-button" type="button">Confirm Order</button>
+            <form th:action="@{/receipt/makeReceipt}" method="post">
+                <button class="confirm-button" type="submit">Confirm Order</button>
+            </form>
             <button class="cancel-button" type="button">Cancel</button>
         </div>
     </div>

@@ -1,39 +1,29 @@
 package com.myPazar.service.detailsService;
 
-import com.myPazar.model.Customer;
-import com.myPazar.model.Role;
+import com.myPazar.model.Seller;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
 
-public class CustomerDetails implements UserDetails {
+public class SellerDetails implements UserDetails {
+    String email;
+    String password;
+    String role;
 
-    private String email;
-    private String password;
     private Collection<? extends GrantedAuthority> authorities;
 
-    public CustomerDetails(Customer customer) {
-        this.email = customer.getEmail();
-        this.password = customer.getPassword();
-        this.authorities = Collections.singleton(new SimpleGrantedAuthority(Role.CUSTOMER.toString()));
+    public SellerDetails(Seller seller){
+     this.email = seller.getEmail();
+     this.password = seller.getPassword();
+     this.role = seller.getRole();
     }
-
-//    private Collection<? extends GrantedAuthority> getAuthoritiesFromRoles(Set<Role> roles) {
-//        Set<GrantedAuthority> authorities = new HashSet<>();
-//        for (Role role : roles) {
-//            authorities.add(new SimpleGrantedAuthority(role.getName()));
-//        }
-//        return authorities;
-//    }
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority(Role.CUSTOMER.toString()));
+        return Collections.singleton(new SimpleGrantedAuthority(role));
     }
 
     @Override

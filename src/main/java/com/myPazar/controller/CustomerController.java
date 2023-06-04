@@ -3,23 +3,30 @@ package com.myPazar.controller;
 import com.myPazar.Tools;
 import com.myPazar.model.BankCard;
 import com.myPazar.model.Customer;
+import com.myPazar.model.Receipt;
 import com.myPazar.repository.CustomerRepo;
 import com.myPazar.service.CustomerService;
-import org.springframework.beans.factory.annotation.Autowired;
+import com.myPazar.service.ReceiptService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
-    @Autowired
-    private CustomerService customerService;
-    @Autowired
-    private CustomerRepo customerRepo;
-    @Autowired
-    private Tools tools;
+    private final CustomerService customerService;
+    private final CustomerRepo customerRepo;
+    private final Tools tools;
+    private final ReceiptService receiptService;
 
+    public CustomerController(CustomerService customerService, CustomerRepo customerRepo, Tools tools, ReceiptService receiptService) {
+        this.customerService = customerService;
+        this.customerRepo = customerRepo;
+        this.tools = tools;
+        this.receiptService = receiptService;
+    }
 
     @GetMapping("/login")
     public String customerLogin(){return "pages/Login";}
@@ -31,16 +38,18 @@ public class CustomerController {
     }
 
     @GetMapping("/signup")
-    public String customerSignUp(){
-        return "pages/";
+    public String customerSignup(){
+        return "pages/customerSignup";
     }
 
-    @PostMapping("/login")
-    public String customerLoginConform(){return "pages/home";}
-
     @PostMapping("/signup")
-    public String signup(@ModelAttribute("customer") Customer customer, Model model){
-        if(customerService.addCustomer(customer)) {
+    public String customerSignupPost(@ModelAttribute("customer") Customer customer, Model model){
+        int code = customerService.addCustomer(customer);
+        if(code == 1) {
+            return "pages/Login";
+        }
+        else if(code == 0){
+            model.addAttribute("emailValid", 0);
             return "pages/Login";
         }
         else{return "";}
@@ -58,7 +67,6 @@ public class CustomerController {
 //        }
 //        return "pages/conf";
 //    }
-
 
     @GetMapping("/settings/profile")
     public String profileShow(Model model){
@@ -96,7 +104,9 @@ public class CustomerController {
 
     @GetMapping("/settings/order")
     public String orderShow(Model model){
+        List<Receipt> receipts = receiptService.getOrderedReceipt();
         model.addAttribute("part", 3);
+        model.addAttribute("receipts", receipts);
         return "pages/userSettings";
     }
 

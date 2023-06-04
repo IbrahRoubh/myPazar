@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Seller Dashboard</title>
+    <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/addProduct.css}">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/sellerHeader.css}">
+</head>
+<body>
+<div th:replace="~{fragments/sellerHeader :: div}"></div>
+
+<div class="main-seller-page">
+    <form method="post" action="">
+        <table class="productTableForm">
+            <tr>
+                <td>
+                    <input class="productInput" type="text" id="productName" name="name" placeholder="Product name">
+                </td>
+                <td>
+                    <textarea class="productInput" id="productDescription" name="productDescription" placeholder="Product Description"></textarea>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="productInput" type="number" id="productPrice" name="price" placeholder="Product Price">
+                </td>
+                <td>
+                    <input class="productInput" type="number" id="productStock" name="count" placeholder="Product Stock">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="productInput" type="text" id="productUnit" name="productUnit" placeholder="Unit">
+                </td>
+                <td>
+                    <input class="productInput" type="text" id="productState" name="state" placeholder="Product State">
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input class="productInput" type="text" id="productCode" name="code" placeholder="Product code">
+                </td>
+                <td>
+                    <input type="file" id="productImage" name="productImage">
+                </td>
+            </tr>
+        </table>
+        <button style="float: right" type="submit">Upload Product</button>
+    </form>
+</div>
+</body>
+
+</html>
+

@@ -1,0 +1,118 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <title></title>
+  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/static/css/dashboard.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/static/css/sellerHeader.css}">
+</head>
+
+<body>
+<div th:replace="~{fragments/sellerHeader :: div}"></div>
+
+<div class="main-seller-page">
+  <div class="head">
+    <div class="col-div-6" style="float: right;">
+      <div class="profile">
+        <div class="profile-dropdown">
+          <img src="Image/shruq.jpg" class="pro-img" />
+          <div class="profile-dropdown-content">
+            <a href="#"><i class="fa fa-user"></i> Edit Profile</a>
+            <a href="#"><i class="fa fa-lock"></i> Change Password</a>
+            <a th:href="@{/logout}"><i class="fa fa-sign-out-alt"></i> Logout</a>
+          </div>
+        </div>
+        <div class="notification">
+          <i class="fa fa-bell"></i>
+          <span class="badge">3</span>
+        </div>
+        <div class="inbox">
+          <i class="fa fa-envelope"></i>
+          <span class="badge">1</span>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"></div>
+  </div>
+
+  <div class="clearfix"></div>
+  <br/>
+
+  <div class="col-div-3">
+    <div class="box">
+      <p>67<br/><span>Customers</span></p>
+      <i class="fa fa-users box-icon"></i>
+    </div>
+  </div>
+  <div class="col-div-3">
+    <a th:href="@{/seller/showProducts}">
+      <div class="box">
+        <p>88<br/><span>Products</span></p>
+        <i class="fa fa-list box-icon"></i>
+      </div>
+    </a>
+  </div>
+  <div class="col-div-3">
+    <div class="box">
+      <p>99<br/><span>Orders</span></p>
+      <i class="fa fa-shopping-bag box-icon"></i>
+    </div>
+  </div>
+  <div class="col-div-3">
+    <div class="box">
+      <p>78<br/><span>Tasks</span></p>
+      <i class="fa fa-tasks box-icon"></i>
+    </div>
+  </div>
+  <div class="clearfix"></div>
+  <br/><br/>
+
+  <div class="col-div-8">
+    <div class="box-8">
+      <div class="content-box">
+        <p>Top Selling Products <span>Sell All</span></p>
+        <br/>
+        <ul class="product-list" th:each="product :${products}">
+          <li>
+            <div class="product-image">
+              <img th:src="${product.pic}" th:alt="${product.name}">
+            </div>
+            <div class="product-details">
+              <h3 th:text="${product.name}"></h3>
+              <p th:text="'Stock: '+${product.count}"></p>
+              <p th:text="'Sold: '+${product.sold}"></p>
+            </div>
+          </li>
+        </ul>
+        <div class="total-revenue">
+          <h4 th:text="'Revenue: '+${total}+'TL'"></h4>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-div-4">
+    <div class="box-4">
+      <div class="content-box">
+        <p>Total Sale <span>Sell All</span></p>
+
+        <div class="circle-wrap">
+          <div class="circle">
+            <div class="mask full">
+              <div class="fill"></div>
+            </div>
+            <div class="mask half">
+              <div class="fill"></div>
+            </div>
+            <div class="inside-circle"> 70% </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="clearfix"></div>
+</div>
+</body>
+</html>

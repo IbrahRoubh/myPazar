@@ -6,17 +6,17 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class CartProduct {
+@Data
+public class ReceiptProduct {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     int quantity;
 
     @ManyToOne
-    Cart cart;
+    Receipt receipt;
     @ManyToOne
     Product product;
 }

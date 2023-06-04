@@ -14,24 +14,17 @@ body {
   height: 98vh;
 }
 
-.center .btns {
-  display: flex;
-  justify-content: center;
-  padding: 40px 0 20px 0;
-}
-
 h1 {
   font-weight: bold;
   margin-top: 0px;
 }
 
-h1.signup-heading {
+h1.login-heading {
   margin-top: 50px;
   text-align: center;
   color: WHITE;
   font-family: 'Montserrat', sans-serif;
 }
-
 
 h2 {
   text-align: center;
@@ -130,10 +123,9 @@ input {
   transition: all 0.6s ease-in-out;
 }
 
-.buyer-container {
+.signup-container {
   left: 0;
   width: 50%;
-  z-index: 2;
 }
 
 .overlay-container {
@@ -147,7 +139,7 @@ input {
 }
 
 .overlay {
-background-image: linear-gradient(160deg, #800000 38%, #ff6666 100%);
+  background-image: linear-gradient(160deg, #800000 38%, #ff6666 100%);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: 0 0;
@@ -174,11 +166,6 @@ background-image: linear-gradient(160deg, #800000 38%, #ff6666 100%);
   transition: transform 0.6s ease-in-out;
 }
 
-.overlay-right {
-  right: 0;
-  transform: translateX(0);
-}
-
 .social-media {
   margin-bottom: 20px;
 }
@@ -200,15 +187,9 @@ background-image: linear-gradient(160deg, #800000 38%, #ff6666 100%);
   color: #fff;
 }
 
-.forget-password {
-  text-decoration: underline;
-  color: blue;
-  margin-left: 195px;
-  font-size: .6rem;
-}
-
-.forget-password:hover {
-    color: red;
+.overlay-right {
+  right: 0;
+  transform: translateX(0);
 }
 
 .overlay-panel.overlay-right {
@@ -219,11 +200,6 @@ background-image: linear-gradient(160deg, #800000 38%, #ff6666 100%);
   text-align: center;
 }
 
-.overlay-panel.overlay-right h1.signup-heading {
-  margin-bottom: 5px;
-
-}
-
 .overlay-panel.overlay-right p {
   margin-top: 5px;
   text-align: justify;
@@ -231,42 +207,4 @@ background-image: linear-gradient(160deg, #800000 38%, #ff6666 100%);
    letter-spacing: -1px;
   font-weight: 600;
   color: black;
-
-}
-
-.validateMessage{
-  width: 100%;
-  height: 50px;
-}
-
-.validateMessage p{
-  color: red;
-  font-family:Verdana, Geneva, Tahoma, sans-serif;
-  margin:0;
-}
-
-.loginBtn{
-  background-color:#eee;;
-  color: #8B0000;
-}
-
-.loginBtn:hover{
-  background-color:#8B0000;
-  color: #fff;
-  cursor: pointer;
-}
-
-.loginPazarLogo{
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  width: 100%;
-  height: 15%;
-  text-align: center;
-}
-
-.loginPazarLogo .logoTitle{
-  color: #800000;
-  font-size:xx-large;
 }

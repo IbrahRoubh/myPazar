@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Signup</title>
+    <link th:href="@{https://fonts.googleapis.com/css?family=Poppins&display=swap}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/customerSignup.css}">
+    <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+</head>
+<body>
+<div class="container4">
+
+    <div class="form-container signup-container">
+        <form th:action="@{/customer/signup}" method="post">
+            <h1> Sign up </h1>
+            <span>or signup with your account</span>
+            <div class="social-media">
+                <a href="#" class="social"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social"><i class="fab fa-google"></i></a>
+                <a href="#" class="social"><i class="fab fa-twitter"></i></a>
+            </div>
+            <input type="text" name="name" placeholder="Name">
+            <input type="email" name="email" placeholder="Email">
+            <input type="phone" name="phone" placeholder="Phone no">
+            <input type="text" name="location" placeholder="Location">
+            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="coPassword" placeholder="Confirm Password">
+            <button type="submit"> Signup </button>
+        </form>
+    </div>
+
+    <div class="overlay-container">
+        <div class="overlay">
+            <div class="overlay-panel overlay-right">
+                <h1 class="login-heading">Login</h1>
+                <a th:href="@{/customer/login}"><button class="btn1" id="logInBuyer">Login</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

@@ -1,7 +1,9 @@
 package com.myPazar;
 
 import com.myPazar.model.Customer;
+import com.myPazar.model.Seller;
 import com.myPazar.repository.CustomerRepo;
+import com.myPazar.repository.SellerRepo;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -13,10 +15,11 @@ import java.util.UUID;
 
 @Component
 public class Tools {
-    CustomerRepo customerRepo;
-
-    public Tools(CustomerRepo customerRepo) {
+    private final CustomerRepo customerRepo;
+    private final SellerRepo sellerRepo;
+    public Tools(CustomerRepo customerRepo, SellerRepo sellerRepo) {
         this.customerRepo = customerRepo;
+        this.sellerRepo = sellerRepo;
     }
 
     public Customer getAuthenticationCustomer(){
@@ -25,6 +28,18 @@ public class Tools {
         return customerRepo.findByEmail(userDetails.getUsername());
     }
 
+    public Seller getAuthenticationSeller(){
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        System.out.println(userDetails.getAuthorities());
+        return sellerRepo.findByEmail(userDetails.getUsername());
+    }
+
+    public boolean isValidEmail(String email){
+        if(sellerRepo.findByEmail(email) == null && customerRepo.findByEmail(email) == null)
+            return true;
+        return false;
+    }
 
     public String loadPic(MultipartFile file){
 
@@ -59,4 +74,5 @@ public class Tools {
         }
         return "";
     }
+
 }
