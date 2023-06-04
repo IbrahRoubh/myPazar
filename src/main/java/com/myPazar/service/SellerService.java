@@ -5,10 +5,12 @@ import com.myPazar.model.Product;
 import com.myPazar.model.ReceiptState;
 import com.myPazar.model.Role;
 import com.myPazar.model.Seller;
+import com.myPazar.repository.ProductRepo;
 import com.myPazar.repository.ReceiptProductRepo;
 import com.myPazar.repository.SellerRepo;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -19,11 +21,13 @@ public class SellerService {
     private final ReceiptProductRepo receiptProductRepo;
     private final PasswordEncoder encoder;
     private final Tools tools;
-    public SellerService(SellerRepo sellerRepo, PasswordEncoder encoder, ReceiptProductRepo receiptProductRepo, Tools tools) {
+    private final ProductRepo productRepo;
+    public SellerService(SellerRepo sellerRepo, PasswordEncoder encoder, ReceiptProductRepo receiptProductRepo, Tools tools, ProductRepo productRepo) {
         this.sellerRepo = sellerRepo;
         this.encoder = encoder;
         this.receiptProductRepo = receiptProductRepo;
         this.tools = tools;
+        this.productRepo = productRepo;
     }
 
     public List<Seller> getSellers(){
@@ -56,5 +60,17 @@ public class SellerService {
     public List<Product> sellerProducts(){
         Seller seller = tools.getAuthenticationSeller();
         return seller.getProducts();
+    }
+
+    public double totalSold(double price,int sold){
+        double total = price*sold;
+        return Math.round(total * 100.0) / 100.0;
+    }
+
+    public void addProduct(Product product, MultipartFile pic){
+        product.setSeller(tools.getAuthenticationSeller());
+        String newPicURLName = tools.loadPic(pic);
+        product.setPic(newPicURLName);
+        productRepo.save(product);
     }
 }

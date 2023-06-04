@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
   <meta charset="UTF-8">
   <title>Seller Dashboard</title>
@@ -7,7 +7,6 @@
   <link rel="stylesheet" type="text/css" th:href="@{/static/css/sellerProducts.css}">
   <link rel="stylesheet" type="text/css" th:href="@{/static/css/sellerHeader.css}">
 </head>
-
 <body>
 <div th:replace="~{fragments/sellerHeader :: div}"></div>
 
@@ -23,16 +22,16 @@
           <p th:text="'Stock: '+${product.count}"></p>
           <p th:text="'Sold: '+${product.sold}"></p>
           <p th:text="'Price: '+ ${product.price}+'TL'"></p>
-          <p th:text="'Revenue: ' + (${product.price} * ${product.sold}) |formatNumber:'#,##0.00' + 'TL'"></p>
+          <p>
+            Revenue:
+            <span th:text="${product.price}*${product.sold}+'TL'">  </span>
+          </p>
           <button>Edit</button>
           <button id="restock1">Restock</button>
         </div>
       </li>
     </ul>
-    <p>
-      Revenue:
-      <span th:text="' ' + (${product.price} * ${product.sold} < 1 ? '0' : ${product.price} * ${product.sold}) + 'TL'"></span>
-    </p>
+    <a th:href="@{/seller/addProduct}" id="add-product">Add Product</a>
   </section>
 </div>
 </body>

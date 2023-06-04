@@ -41,6 +41,7 @@ public class Tools {
         return false;
     }
 
+    public static String uploadDirectory= System.getProperty("user.home") + "\\images";
     public String loadPic(MultipartFile file){
 
         if(!file.isEmpty()){
@@ -48,15 +49,13 @@ public class Tools {
                 String originalFilename = file.getOriginalFilename();
                 String uniqueFilename = setUniqueName(originalFilename);
 
-                //TODO: we should change the path passe on the localhost location
-                String uploadDirectory = "C:/Users/ss/Desktop/myPazar project/pics/";
-                file.transferTo(new File(uploadDirectory + uniqueFilename));
-                return (uploadDirectory+uniqueFilename);
+                file.transferTo(new File(uploadDirectory+ "/" + uniqueFilename));
+                return ("/images/"+uniqueFilename);
             }catch (Exception e){
-                return "";
+                return "/images/empty.jpg";
             }
         }else{
-            return "";
+            return "/images/empty.jpg";
         }
     }
 

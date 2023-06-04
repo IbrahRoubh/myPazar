@@ -11,30 +11,35 @@
 <div th:replace="~{fragments/sellerHeader :: div}"></div>
 
 <div class="main-seller-page">
-    <form method="post" action="">
+    <form method="post" th:action="@{/seller/addProduct}" enctype="multipart/form-data">
         <table class="productTableForm">
             <tr>
                 <td>
                     <input class="productInput" type="text" id="productName" name="name" placeholder="Product name">
                 </td>
                 <td>
-                    <textarea class="productInput" id="productDescription" name="productDescription" placeholder="Product Description"></textarea>
+                    <textarea class="productInput" id="productDescription" name="description" placeholder="Product Description"></textarea>
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input class="productInput" type="number" id="productPrice" name="price" placeholder="Product Price">
+                    <input class="productInput" type="number" id="productPrice" name="price" placeholder="Product Price" min="1">
                 </td>
                 <td>
-                    <input class="productInput" type="number" id="productStock" name="count" placeholder="Product Stock">
+                    <input class="productInput" type="number" id="productStock" name="count" placeholder="Product Stock" min="0">
                 </td>
             </tr>
             <tr>
                 <td>
-                    <input class="productInput" type="text" id="productUnit" name="productUnit" placeholder="Unit">
+                    <select  class="productInput" type="text" id="productUnit" name="unit" placeholder="Unit">
+
+                        <option th:each="unit:${units}" th:value="${unit}" th:text="${unit.toString}"></option>
+                    </select>
                 </td>
                 <td>
-                    <input class="productInput" type="text" id="productState" name="state" placeholder="Product State">
+                    <select class="productInput" id="productState" name="state" placeholder="Product State">
+                        <option th:each="state : ${states}" th:value="${state}" th:text="${state}"></option>
+                    </select>
                 </td>
             </tr>
             <tr>
@@ -42,7 +47,14 @@
                     <input class="productInput" type="text" id="productCode" name="code" placeholder="Product code">
                 </td>
                 <td>
-                    <input type="file" id="productImage" name="productImage">
+                    <input type="file" id="productImage" name="productPic" >
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select class="productInput" id="species" name="species">
+                        <option th:each="species: ${speciesList}" th:value="${species.id}" th:text="${species.name}"></option>
+                    </select>
                 </td>
             </tr>
         </table>
