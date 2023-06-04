@@ -5,18 +5,36 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Pazar</title>
   <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}">
-
   <link rel="stylesheet" th:href="@{https://use.fontawesome.com/releases/v5.0.8/css/all.css}" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
-
   <link rel="stylesheet" type="text/css" th:href="@{/static/css/headerFooter.css}">
+  <link rel="stylesheet" type="text/css" th:href="@{/static/css/seller.css}">
 </head>
 
 <body>
 <div th:replace="~{fragments/header :: header}"></div>
-<div class="main-page">
+<div class="main-page" style="font-family: 'Poppins', sans-serif;">
+  <section id="about">
+    <div class="aboutus12">
+      <img th:src="@{/static/Image/pose_40.png}" alt="About Us Image">
+      <div class="content22">
+        <h1> Want to join our team?</h1>
+        <p>
+          If you are passionate about making a difference, possess a strong work ethic, and thrive in a fast-paced environment, we want to hear from you.
+          <span style="color: darkgray;">Join us on this exciting journey as we shape the future of deliveries together.</span>
+          Come aboard the Pazarista team and embark on a rewarding career filled with growth, challenges, and opportunities. We look forward to welcoming talented individuals like you to our family!
+          <span style="color: #8b0000;">Apply now</span> and be a part of our success story.
+        </p>
 
+        <div class="button-container12">
+          <a th:href="@{/seller/signup}"><button class="readmore-button12">Join now</button></a>
+        </div>
+      </div>
+    </div>
+  </section>
 </div>
 <div th:replace="~{fragments/footer :: footer}"></div>
 <script th:src="@{/static/js/app.js}"></script>
 </body>
 </html>
+</head>
+<body>

@@ -21,4 +21,11 @@ public interface ReceiptProductRepo extends JpaRepository<ReceiptProduct, Long> 
             "ORDER BY SUM(rp.quantity) DESC")
     List<Product> findMostSoldProductsBySellerId(@Param("sellerId") Long sellerId, @Param("receiptState") ReceiptState receiptState);
 
+    @Query("SELECT rp FROM ReceiptProduct rp " +
+            "JOIN rp.receipt r " +
+            "JOIN rp.product p " +
+            "WHERE p.seller.id = :sellerId " +
+            "AND r.state != :receiptState")
+    List<ReceiptProduct> findReceiptProductsBySellerId(@Param("sellerId") Long sellerId, @Param("receiptState") ReceiptState receiptState);
+
 }

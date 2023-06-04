@@ -56,8 +56,8 @@ public class DatabaseLoader implements CommandLineRunner{
         sellerRepo.save(seller);
 
         Product product1 = new Product("turkish banana",15,"osa11",ProductUnit.Kg.toString(),20,"","first class onion",species4);
-        Product product2 = new Product("italian banana",25.49,"ib21",ProductUnit.Kg.toString(),12,"","fresh banana from italy",species4 );
-        Product product3 = new Product("yellow apple",7.85,"ay",ProductUnit.Kg.toString(),5,"","as djf ldj dlfjd ldjfd dlfjd ldjdld dldfjd ",species1);
+        Product product2 = new Product("italian banana",25,"ib21",ProductUnit.Kg.toString(),12,"","fresh banana from italy",species4 );
+        Product product3 = new Product("yellow apple",7,"ay",ProductUnit.Kg.toString(),5,"","as djf ldj dlfjd ldjfd dlfjd ldjdld dldfjd ",species1);
         Product product4 = new Product("red apple",6,"ga",ProductUnit.Kg.toString(),24,"","",species1);
         Product product5 = new Product("green apple",12,"ed",ProductUnit.Kg.toString(),32,"","green apple",species1);
         product1.setPic("/images/turkishBanana.jpg");
@@ -70,6 +70,11 @@ public class DatabaseLoader implements CommandLineRunner{
         product3.setSeller(seller);
         product4.setSeller(seller);
         product5.setSeller(seller);
+        product1.setState(ProductState.Active);
+        product2.setState(ProductState.Active);
+        product3.setState(ProductState.Active);
+        product4.setState(ProductState.Active);
+        product5.setState(ProductState.Active);
         productRepo.save(product1);
         productRepo.save(product2);
         productRepo.save(product3);

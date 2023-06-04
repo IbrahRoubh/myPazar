@@ -45,21 +45,4 @@ public class Product {
         this.species = species;
         this.sold = 0;
     }
-
-    @Override
-    public String toString() {
-        return "Product{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", price=" + price +
-                ", code='" + code + '\'' +
-                ", unit='" + unit + '\'' +
-                ", count=" + count +
-                ", sold=" + sold +
-                ", pic='" + pic + '\'' +
-                ", description='" + description + '\'' +
-                ", state=" + state +
-                ", species=" + species.getName() +
-                '}';
-    }
 }

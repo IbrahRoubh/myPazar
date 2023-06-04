@@ -29,12 +29,13 @@ public class SellerController {
 
     @PostMapping("/signup")
     public String sellerSignupPost(@ModelAttribute("seller") Seller seller, Model model){
+        System.out.println(seller.toString());
         int code = sellerService.addSeller(seller);
         if(code == 0){
             model.addAttribute("emailValid", 0);
             return "pages/sellerSignup";
         }
-        return "pages/loginSeller";
+        return "pages/Login";
     }
 
     @GetMapping("/home")
@@ -71,5 +72,12 @@ public class SellerController {
         List<Product> products = sellerService.sellerProducts();
         model.addAttribute("products", products);
         return "pages/sellerProductShow";
+    }
+
+    @GetMapping("/showOrders")
+    public String showOrders(Model model){
+        List<ReceiptProduct> receiptProducts = sellerService.getReceiptProductBySellerId();
+        model.addAttribute("receiptProducts", receiptProducts);
+        return "pages/sellerOrderShow";
     }
 }

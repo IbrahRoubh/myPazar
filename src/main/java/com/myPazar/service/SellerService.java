@@ -1,10 +1,7 @@
 package com.myPazar.service;
 
 import com.myPazar.Tools;
-import com.myPazar.model.Product;
-import com.myPazar.model.ReceiptState;
-import com.myPazar.model.Role;
-import com.myPazar.model.Seller;
+import com.myPazar.model.*;
 import com.myPazar.repository.ProductRepo;
 import com.myPazar.repository.ReceiptProductRepo;
 import com.myPazar.repository.SellerRepo;
@@ -49,7 +46,7 @@ public class SellerService {
     }
 
     public int addSeller(Seller seller){
-        if(tools.isValidEmail(seller.getEmail()))
+        if(!tools.isValidEmail(seller.getEmail()))
             return 0;
         seller.setRole(Role.SELLER.toString());
         seller.setPassword(encoder.encode(seller.getPassword()));
@@ -72,5 +69,11 @@ public class SellerService {
         String newPicURLName = tools.loadPic(pic);
         product.setPic(newPicURLName);
         productRepo.save(product);
+    }
+
+    public List<ReceiptProduct> getReceiptProductBySellerId(){
+        Seller seller = tools.getAuthenticationSeller();
+        List<ReceiptProduct> receiptProducts = receiptProductRepo.findReceiptProductsBySellerId(seller.getId(), ReceiptState.canceled);
+        return receiptProducts;
     }
 }

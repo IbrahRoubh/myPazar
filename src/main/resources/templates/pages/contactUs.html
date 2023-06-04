@@ -19,7 +19,7 @@
             <div class="new-image-box">
                 <img th:src="@{/static/Image/contactus1.jpg}" alt="">
             </div>
-            <form action="#">
+            <form th:action="@{/sendMessage}" method="post">
                 <div class="new-topic">Send us a message</div>
                 <div class="new-input-box">
                     <input type="text" name="name" placeholder="Name">
@@ -31,7 +31,7 @@
                     <input type="text" name="phone" placeholder="Phone no">
                 </div>
                 <div class="new-message-box">
-                    <input type="text" name="name" placeholder="Message">
+                    <textarea type="text" name="name" placeholder="Message"></textarea>
                 </div>
                 <div class="new-input-box">
                     <input type="submit" value="Send Message">

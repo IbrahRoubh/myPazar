@@ -128,13 +128,8 @@
                   </div>
                 </td>
                 <td>
-                  <a href="cart.html" class="order-details-link">
+                  <a th:href="@{/receipt/showReceipt/{receiptTrackCode}(receiptTrackCode=${receipt.trackCode})}" class="order-details-link">
                     <button class="order-details-button">Order Details</button>
-                  </a>
-                </td>
-                <td>
-                  <a href="receipt.html" class="print-receipt-link">
-                    <button class="print-receipt-button">Print Receipt</button>
                   </a>
                 </td>
               </tr>

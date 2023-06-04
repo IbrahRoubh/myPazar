@@ -1,0 +1,145 @@
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans&family=Poppins:wght@100;600;700&display=swap');
+
+*{
+  padding : 0px;
+  margin: 0px;
+  boxsizing:border-box;
+  text-decoration: none;
+  outline: none;
+  border: none;
+  text-transform: capitalize;
+  transition: all .2s linear;
+}
+
+html
+{
+  font-size: 62.5%;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  scroll-padding-top: 7rem;
+}
+
+body
+{
+  background: #fff;
+  width: 100%;
+  height: 100vh;
+  body
+}
+
+.aboutus12 {
+  display: flex;
+  align-items: center;
+  width: 85%;
+  margin-top: 80px;
+}
+
+.aboutus12 img {
+  flex: 0 50%;
+  max-width: 50%;
+  height: auto;
+}
+
+.content22 {
+  padding: 30px;
+  box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+.content22 h1 {
+  color : #8B0000;
+  font-size: 20px;
+  margin-top: 60px 100px;
+  text-align: center;
+
+}
+
+
+.content22 p {
+
+  color : black;
+  font-size:  20px;
+  line-height: 1.5;
+  margin: 15px 50px;
+
+  margin-left: 90px;
+  font-weight: 1000;
+  letter-spacing: 1px;
+  word-spacing: 2px;
+
+}
+
+.button-container12 {
+  display: flex;
+  margin-left:  220px;
+
+}
+
+.readmore-button12 {
+
+  border: .1rem solid black;
+  margin: 3rem 0 0;
+  display: inline-block;
+  padding: .8rem 2rem;
+  font-size: 1.7rem;
+  border-radius: .1rem;
+  color: black;
+  cursor: pointer;
+  background: none;
+  text-align: center;
+  font-weight: 1000;
+}
+
+
+.readmore-button12:hover {
+
+background-color: #8B0000;
+color: #fff
+}
+
+/* Media Queries */
+
+@media screen and (max-width: 1200px) {
+  .aboutus {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  .aboutus {
+    flex-direction: column;
+    width: 100%;
+  }
+  .aboutus img {
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+
+  .content h1 {
+    font-size: 16px;
+  }
+  .content p {
+    font-size: 17px;
+  }
+  .readmore-button {
+    font-size: 1.5rem;
+    padding: .8rem 2rem;
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 576px) {
+
+  .content h1 {
+    font-size: 14px;
+  }
+  .content p {
+    font-size: 15px;
+  }
+  .readmore-button {
+    font-size: 1.3rem;
+    padding: .10rem 1.5rem;
+  }
+}

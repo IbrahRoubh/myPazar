@@ -42,4 +42,19 @@ public class Seller {
             this.products = new ArrayList<>();
         this.products.add(product);
     }
+
+    @Override
+    public String toString() {
+        return "Seller{" +
+                "id=" + id +
+                ", email='" + email + '\'' +
+                ", name='" + name + '\'' +
+                ", password='" + password + '\'' +
+                ", phone='" + phone + '\'' +
+                ", location='" + location + '\'' +
+                ", profilePic='" + profilePic + '\'' +
+                ", role='" + role + '\'' +
+                ", workPermit='" + workPermit + '\'' +
+                '}';
+    }
 }

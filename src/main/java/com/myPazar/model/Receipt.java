@@ -23,6 +23,7 @@ public class Receipt {
     String trackCode;
     Date dateOFDelivery;
 
+
     @ManyToOne
     Customer customer;
     @OneToMany(mappedBy = "receipt", fetch = FetchType.EAGER)

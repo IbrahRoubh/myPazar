@@ -2,6 +2,7 @@ package com.myPazar.controller;
 
 
 import com.myPazar.Tools;
+import com.myPazar.model.Message;
 import com.myPazar.model.Seller;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -9,6 +10,8 @@ import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class MainController {
@@ -52,4 +55,9 @@ public class MainController {
         Seller seller =tools.getAuthenticationSeller();
         System.out.println(seller.getRole());
         return "pages/sellerAddProduct";}
+
+    @PostMapping("/sendMessage")
+    public String sendMessage(@ModelAttribute("message")Message message){
+        return "pages/thankYou";
+    }
 }

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Pazar</title>
+    <link rel="stylesheet" type="text/css" th:href="@{/static/css/sellerHeader.css}">
+  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css}">
+  <link rel="stylesheet" th:href="@{https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css}">
+</head>
+<body>
+<div th:replace="~{fragments/sellerHeader :: div}"></div>
+
+<div class="main-seller-page">
+
+  <table style="width:100%; border-bottom: 1px gray; text-align:center;">
+    <thead>
+    <tr>
+      <th><h3>Pic</h3></th>
+      <th><h3>Product name</h3></th>
+      <th><h3>Code</h3></th>
+      <th><h3>Quantity</h3></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="RP :${receiptProducts}">
+      <td style="width: 200px; height: 200px;">
+        <img th:src="${RP.product.pic}" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+      </td>
+      <td>
+        <h4 th:text="${RP.product.name}"></h4>
+      </td>
+      <td>
+        <h4 th:text="${RP.product.code}"></h4>
+      </td>
+      <td>
+        <h4 th:text="${RP.quantity}+${RP.product.unit}"></h4>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+
+</div>
+
+</body>
+</html>

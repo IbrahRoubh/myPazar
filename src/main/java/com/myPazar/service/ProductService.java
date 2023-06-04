@@ -1,6 +1,7 @@
 package com.myPazar.service;
 
 import com.myPazar.model.Product;
+import com.myPazar.model.ProductState;
 import com.myPazar.model.Species;
 import com.myPazar.repository.ProductRepo;
 import com.myPazar.repository.SpeciesRepo;
@@ -8,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -21,7 +23,10 @@ public class ProductService {
         Species species= speciesRepo.findByName(speciesName);
 
         if(species!= null){
-        return species.getProductList();
+            List<Product> products = species.getProductList();
+        return products.stream()
+                .filter(p -> p.getState() == ProductState.Active)
+                .collect(Collectors.toList());
         }else{
             return null;
         }
