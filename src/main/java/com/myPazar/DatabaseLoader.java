@@ -133,8 +133,8 @@ public class DatabaseLoader implements CommandLineRunner{
         productRepo.save(product9);
 
 
-        Customer customer1 = new Customer("i@gmail","ibrahim", encoder.encode("123"),"04140","istanboul");
-        Customer customer2 = new Customer("f@gmail","ibrahim", encoder.encode("000"),"04140","istanboul");
+        Customer customer1 = new Customer("i@gmail","lama", encoder.encode("123"),"04140","istanboul");
+        Customer customer2 = new Customer("f@gmail","shroq", encoder.encode("000"),"04140","istanboul");
         customer1.addRole(Role.CUSTOMER);
         customer2.addRole(Role.CUSTOMER);
         customerRepo.save(customer1);
@@ -148,7 +148,7 @@ public class DatabaseLoader implements CommandLineRunner{
         cartRepo.save(cart1);
         cartRepo.save(cart2);
 
-        BankCard bankCard1= new BankCard("ibrahim","1447 1471 1474 0021","020","07/29",customer1);
+        BankCard bankCard1= new BankCard("lama","1447 1471 1474 0021","020","07/29",customer1);
         BankCard bankCard2= new BankCard(customer2.getName(),"1447 1471 1474 0021","017","06/27",customer2);
         bankCardRepo.save(bankCard1);
         bankCardRepo.save(bankCard2);
